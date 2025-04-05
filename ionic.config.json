@@ -1,0 +1,7 @@
+{
+  "name": "OrganizadorFinancieroIA",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

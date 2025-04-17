@@ -20,8 +20,8 @@ export class BotonesInicioComponent implements OnInit {
   }
 
   // Función para el segundo botón
-  otraAccion() {
-    console.log('Otra acción');
-    // Aquí iría la lógica para otro botón
+  registrarse() {
+    console.log('Registrarce');
+    this.router.navigate(['/register']);
   }
 }

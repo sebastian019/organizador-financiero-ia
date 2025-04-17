@@ -1,0 +1,21 @@
+ion-content {
+  --background: white; /* Esto establece el fondo de la página */
+}
+
+/* Contenedor de botones centrados */
+.botones-container {
+  display: flex;
+  justify-content: center;   /* Centra los botones horizontalmente */
+  align-items: center;       /* Centra los botones verticalmente */
+  gap: 16px;                 /* Espacio entre los botones */
+  margin-top: 20px;          /* Ajuste de margen superior */
+  flex-wrap: wrap;           /* Los botones se ajustarán en pantallas pequeñas */
+  height: 100%;              /* Asegura que el contenedor ocupe toda la altura disponible */
+}
+
+/* Estilos para los botones */
+ion-button {
+  max-width: 200px;          /* Maxima anchura para los botones */
+  flex: 1 1 auto;            /* Los botones pueden crecer hasta el máximo de 200px */
+  text-align: center;        /* Asegura que el texto dentro de los botones esté centrado */
+}

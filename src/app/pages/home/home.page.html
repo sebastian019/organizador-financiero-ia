@@ -1,21 +1,11 @@
-<ion-content class="ion-padding">
-  <h2>Formulario de Registro</h2>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>GEPETE ECONOMICS</ion-title>
+    <img src="assets/tralalero.png" class="tralalero">
+    <!-- <ion-toggle class="dark-mode-toggle"></ion-toggle>-->
+  </ion-toolbar>
+</ion-header>
 
-  <ion-item>
-    <ion-label position="floating">Nombre</ion-label>
-    <ion-input type="text" [(ngModel)]="nombre" name="nombre" required></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Correo electrónico</ion-label>
-    <ion-input type="email" [(ngModel)]="email" name="email" required></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <ion-input type="password" [(ngModel)]="contrasenia" name="contrasenia" required></ion-input>
-  </ion-item>
-
-  <ion-button expand="full" (click)="registrarUsuario()">Registrar</ion-button>
-
+<ion-content>
+  <app-botones-inicio></app-botones-inicio> <!-- Aquí agregamos el componente -->
 </ion-content>

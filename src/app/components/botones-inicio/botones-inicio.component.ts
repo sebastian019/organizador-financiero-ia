@@ -24,4 +24,11 @@ export class BotonesInicioComponent implements OnInit {
     console.log('Registrarce');
     this.router.navigate(['/register']);
   }
+
+  /*ingresar() {
+    console.log('Ingresar');
+    this.router.navigate(['/ingresar']);
+  }*/
+
+  
 }

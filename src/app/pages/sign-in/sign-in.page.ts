@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class SignInPage implements OnInit {
   formulario!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit() {
     this.formulario = this.fb.group({
@@ -21,7 +23,9 @@ export class SignInPage implements OnInit {
 
   login() {
     if (this.formulario.valid) {
-      console.log(this.formulario.value); // simulás un inicio de sesión
+      //console.log(this.formulario.value); // simulás un inicio de sesión
+      this.router.navigate(['/menu-principal']);
     }
+    this.router.navigate(['/menu-principal']);
   }
 }

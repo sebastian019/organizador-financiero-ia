@@ -25,6 +25,10 @@ const routes: Routes = [
   },  {
     path: 'inversiones',
     loadChildren: () => import('./pages/inversiones/inversiones.module').then( m => m.InversionesPageModule)
+  },
+  {
+    path: 'consulta-gpt',
+    loadChildren: () => import('./pages/consulta-gpt/consulta-gpt.module').then( m => m.ConsultaGptPageModule)
   }
 
   /*{

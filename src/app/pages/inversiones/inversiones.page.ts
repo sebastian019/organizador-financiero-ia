@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inversiones',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InversionesPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   acciones = [
     { nombre: 'Apple (AAPL)', cambio: 1.2 },
@@ -40,6 +41,10 @@ export class InversionesPage implements OnInit {
     } else {
       this.activoIndex = this.fondos.length - 1;
     }
+  }
+
+  irConsultaGpt(){
+    this.router.navigate(['/consulta-gpt']);
   }
 
   ngOnInit() { }

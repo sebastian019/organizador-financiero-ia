@@ -15,6 +15,10 @@ export class MenuPrincipalPage implements OnInit {
     this.router.navigate(['/inversiones']);
   }
 
+  irConsultaGpt(){
+    this.router.navigate(['/consulta-gpt']);
+  }
+
   ngOnInit() {
   }
 

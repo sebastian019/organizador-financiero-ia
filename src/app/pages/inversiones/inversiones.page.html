@@ -1,0 +1,39 @@
+<ion-content class="ion-padding">
+  <div class="inversiones-container">
+    <!-- Sección de las acciones -->
+    <div class="acciones-lista">
+      <h3>Acciones del mercado</h3>
+      <ion-list>
+        <ion-item *ngFor="let accion of acciones">
+          <ion-label>
+            {{ accion.nombre }}
+          </ion-label>
+          <ion-label
+            slot="end"
+            [color]="accion.cambio > 0 ? 'success' : accion.cambio < 0 ? 'danger' : 'medium'"
+            class="porcentaje"
+          >
+            {{ accion.cambio >= 0 ? '+' : '' }}{{ accion.cambio }}%
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <!-- Sección de los fondos mutuos -->
+    <div class="fondos-grafico">
+      <h3>Fondos Mutuos</h3>
+      <div class="grafico-placeholder">
+        <p>Gráfico de fluctuaciones de fondo</p>
+      </div>
+      <div class="flechas">
+        <ion-button (click)="anteriorFondo()">Anterior</ion-button>
+        <ion-button (click)="siguienteFondo()">Siguiente</ion-button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón Consulta GPT -->
+  <div class="consulta-gpt-container">
+    <ion-button expand="block" class="consulta-gpt-button">CONSULTA GPT</ion-button>
+  </div>
+</ion-content>

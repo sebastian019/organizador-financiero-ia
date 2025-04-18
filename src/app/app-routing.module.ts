@@ -22,7 +22,11 @@ const routes: Routes = [
   {
     path: 'menu-principal',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
+  },  {
+    path: 'inversiones',
+    loadChildren: () => import('./pages/inversiones/inversiones.module').then( m => m.InversionesPageModule)
   }
+
   /*{
     path: 'login',
     loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)

@@ -2,10 +2,10 @@ ion-header {
     --background: #4CAF50;
   }
   
-  .header-title {
+  ion-title {
     text-align: center;
+    font-size: 24px;
     font-weight: bold;
-    color: white;
   }
   
   .inversiones-container {
@@ -70,6 +70,19 @@ ion-header {
     justify-content: center; 
     height: 100vh; 
   }
+
+  .boton-invertir-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.boton-invertir {
+  width: 140px;
+  height: 40px;
+  font-size: 14px;
+}
+
   
   
   

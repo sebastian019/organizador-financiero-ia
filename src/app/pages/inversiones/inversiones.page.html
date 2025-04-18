@@ -17,13 +17,19 @@
           </ion-label>
         </ion-item>
       </ion-list>
+
+      <!-- Botón Invertir centrado -->
+      <div class="boton-invertir-wrapper">
+        <ion-button expand="block" class="boton-invertir">INVERTIR</ion-button>
+      </div>
     </div>
 
     <!-- Sección de los fondos mutuos -->
     <div class="fondos-grafico">
       <h3>Fondos Mutuos</h3>
       <div class="grafico-placeholder">
-        <p>Gráfico de fluctuaciones de fondo</p>
+        <!-- Imagen de fluctuaciones de fondo -->
+        <img src="assets/grafico-fondo-1.png" alt="Gráfico Fondo 1">
       </div>
       <div class="flechas">
         <ion-button (click)="anteriorFondo()">Anterior</ion-button>
@@ -37,3 +43,9 @@
     <ion-button expand="block" class="consulta-gpt-button" (click)="irConsultaGpt()">CONSULTA GPT</ion-button>
   </div>
 </ion-content>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>GEPETE ECONOMICS</ion-title>
+  </ion-toolbar>
+</ion-header>

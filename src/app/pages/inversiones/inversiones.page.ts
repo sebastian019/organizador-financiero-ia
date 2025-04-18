@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChartConfiguration, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-inversiones',
@@ -20,12 +21,47 @@ export class InversionesPage implements OnInit {
   ];
 
   fondos = [
-    { nombre: 'Fondo Mutuo A', datos: [] },
-    { nombre: 'Fondo Mutuo B', datos: [] },
-    { nombre: 'Fondo Mutuo C', datos: [] },
+    {
+      nombre: 'Fondo Mutuo A',
+      datos: [10, 15, 20, 18, 22]
+    },
+    {
+      nombre: 'Fondo Mutuo B',
+      datos: [8, 9, 14, 13, 17]
+    },
+    {
+      nombre: 'Fondo Mutuo C',
+      datos: [12, 11, 16, 20, 25]
+    }
   ];
 
   activoIndex = 0;
+
+  get fondoActivo() {
+    return this.fondos[this.activoIndex];
+  }
+
+  public lineChartData: ChartConfiguration<'line'>['data'] = {
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May'],
+    datasets: [
+      {
+        data: [],
+        label: '',
+        borderColor: '#36A2EB',
+        backgroundColor: 'rgba(54,162,235,0.2)',
+        fill: true,
+        tension: 0.4
+      }
+    ]
+  };
+
+  public lineChartType: ChartType = 'line';
+
+  actualizarGrafico() {
+    const fondo = this.fondoActivo;
+    this.lineChartData.datasets[0].data = fondo.datos;
+    this.lineChartData.datasets[0].label = fondo.nombre;
+  }
 
   siguienteFondo() {
     if (this.activoIndex < this.fondos.length - 1) {
@@ -33,6 +69,7 @@ export class InversionesPage implements OnInit {
     } else {
       this.activoIndex = 0;
     }
+    this.actualizarGrafico();
   }
 
   anteriorFondo() {
@@ -41,12 +78,16 @@ export class InversionesPage implements OnInit {
     } else {
       this.activoIndex = this.fondos.length - 1;
     }
+    this.actualizarGrafico();
   }
+  
 
-  irConsultaGpt(){
+  irConsultaGpt() {
     this.router.navigate(['/consulta-gpt']);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.actualizarGrafico();
+  }
 
 }

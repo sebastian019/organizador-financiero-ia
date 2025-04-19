@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-consulta-gpt',
@@ -14,7 +15,11 @@ export class ConsultaGptPage implements OnInit {
   // Variable de consulta (aunque no se use realmente)
   consulta: string = '';
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  irAOpciones() {
+    this.router.navigate(['/opciones']);
+  }  
 
   ngOnInit() {
     // Aquí no necesitas hacer nada por ahora

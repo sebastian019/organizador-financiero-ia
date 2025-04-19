@@ -4,7 +4,7 @@
     <ion-title class="title">GEPETE ECONOMICS</ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear">
-        <img src="assets/gear.png" class="gear-icon" (click)="irAOpciones()" />
+        <img src="assets/gear.png" class="gear-icon" />
         <ion-icon name="settings" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -12,17 +12,18 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div class="upload-container">
-    <h2>Antes de continuar, ingresa tu cartola de gastos en formato PDF</h2>
+  <div class="dashboard-container">
+    <h2>Gastos</h2>
 
-    <div class="upload-box">
-      <ion-icon name="arrow-up-outline" class="upload-icon"></ion-icon>
-      <p>Arrastra o sube un archivo</p>
+    <div class="gastos-list">
+      <ion-list>
+        <ion-item *ngFor="let gasto of gastos"> {{ gasto }} </ion-item>
+      </ion-list>
     </div>
 
-    <div class="consulta-gpt-container">
-      <ion-button expand="block" class="consulta-gpt-button" (click)="irAListaGastos()">Cargar Documento</ion-button>
-    </div>
+    <ion-button class="gastos-btn">
+      Hacer consulta sobre gastos
+    </ion-button>
 
     <div class="modo-oscuro">
       <small>Modo oscuro</small>

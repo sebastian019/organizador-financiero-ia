@@ -81,6 +81,9 @@ export class InversionesPage implements OnInit {
     this.actualizarGrafico();
   }
   
+  irAOpciones() {
+    this.router.navigate(['/opciones']);
+  }  
 
   irConsultaGpt() {
     this.router.navigate(['/consulta-gpt']);

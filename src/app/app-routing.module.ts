@@ -37,6 +37,10 @@ const routes: Routes = [
   {
     path: 'opciones',
     loadChildren: () => import('./pages/opciones/opciones.module').then( m => m.OpcionesPageModule)
+  },
+  {
+    path: 'lista-gastos',
+    loadChildren: () => import('./pages/lista-gastos/lista-gastos.module').then( m => m.ListaGastosPageModule)
   }
 
 

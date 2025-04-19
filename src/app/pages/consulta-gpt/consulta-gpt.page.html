@@ -1,3 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="assets/tralalero.png" class="tralalero" />
+    <ion-title class="title">GEPETE ECONOMICS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <img src="assets/gear.png" class="gear-icon" (click)="irAOpciones()" />
+        <ion-icon name="settings" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="ion-padding">
 
   <!-- Sidebar (puedes poner esto en un componente si quieres reutilizarlo) -->
@@ -19,9 +32,6 @@
       <span>Modo oscuro</span>
     </div>
   </div>
-
-  <!-- Engranaje esquina superior derecha -->
-  <ion-icon name="settings" class="icon-settings"></ion-icon>
 
   <!-- Ícono central -->
   <div class="icon-center">

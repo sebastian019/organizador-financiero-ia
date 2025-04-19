@@ -1,0 +1,56 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    position: relative;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .tralalero {
+    position: absolute;
+    top: -5px;
+    left: 5px;
+    width: 80px;
+  }
+  
+  .gear-icon {
+    width: 100px;
+    height: 30px;
+    position: relative;
+    top: 1px;
+    right: 1px;
+  }
+  
+  .gastos-list {
+    width: 80%;
+    max-width: 700px;
+    background-color: gray;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .gastos-btn {
+    margin-top: 20px;
+    color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  .modo-oscuro {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }

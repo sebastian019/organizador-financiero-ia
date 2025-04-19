@@ -23,6 +23,10 @@ export class MenuPrincipalPage implements OnInit {
     this.router.navigate(['/consulta-gpt']);
   }
 
+  irAOpciones() {
+    this.router.navigate(['/opciones']);
+  }  
+
   ngOnInit() {
   }
 

@@ -7,6 +7,13 @@
     text-align: center;
     gap: 20px;
   }
+  .gear-icon {
+    width: 100px;
+    height: 40px;
+    position: relative;
+    top: 1px;      // hacia abajo
+    right: 1px;   // hacia la derecha
+  }
   
   .upload-box {
     background-color: #777;

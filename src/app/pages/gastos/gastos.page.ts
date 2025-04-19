@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gastos',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GastosPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  irAOpciones() {
+    this.router.navigate(['/opciones']);
+  }  
 
   ngOnInit() {
   }

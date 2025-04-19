@@ -33,6 +33,10 @@ const routes: Routes = [
   },  {
     path: 'gastos',
     loadChildren: () => import('./pages/gastos/gastos.module').then( m => m.GastosPageModule)
+  },
+  {
+    path: 'opciones',
+    loadChildren: () => import('./pages/opciones/opciones.module').then( m => m.OpcionesPageModule)
   }
 
 

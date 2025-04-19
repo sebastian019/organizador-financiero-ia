@@ -6,7 +6,7 @@ import { ChartConfiguration, ChartType } from 'chart.js';
   selector: 'app-inversiones',
   templateUrl: './inversiones.page.html',
   styleUrls: ['./inversiones.page.scss'],
-  standalone: false,
+  standalone: false
 })
 export class InversionesPage implements OnInit {
 

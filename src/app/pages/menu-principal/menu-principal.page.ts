@@ -11,6 +11,10 @@ export class MenuPrincipalPage implements OnInit {
 
   constructor(private router: Router) {}
 
+  irAGastos() {
+    this.router.navigate(['/gastos']);
+  }
+
   irAInversiones() {
     this.router.navigate(['/inversiones']);
   }

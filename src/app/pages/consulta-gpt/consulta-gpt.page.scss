@@ -1,0 +1,64 @@
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    padding: 10px;
+    background: white;
+  }
+  
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .menu-title {
+    font-weight: bold;
+  }
+  
+  .menu-description {
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .modo-oscuro {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .icon-settings {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 32px;
+  }
+  
+  .icon-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+  
+  .big-dollar-icon {
+    font-size: 120px;
+    color: #222;
+  }
+  
+  .consulta-form {
+    position: absolute;
+    bottom: 20px;
+    left: 220px;
+    display: flex;
+    gap: 5px;
+  }
+  
+  input {
+    width: 300px;
+    padding: 5px;
+  }
+  

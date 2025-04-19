@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-botones-inicio',
@@ -8,19 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BotonesInicioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
 
   // Función para el botón "Iniciar sesión"
   iniciarSesion() {
     console.log('Iniciar sesión');
-    // Aquí iría la lógica de inicio de sesión
+    this.router.navigate(['/sign-in']);
   }
 
   // Función para el segundo botón
-  otraAccion() {
-    console.log('Otra acción');
-    // Aquí iría la lógica para otro botón
+  registrarse() {
+    console.log('Registrarce');
+    this.router.navigate(['/register']);
   }
+
+  /*ingresar() {
+    console.log('Ingresar');
+    this.router.navigate(['/ingresar']);
+  }*/
+  irAInversiones() {
+    this.router.navigate(['/inversiones']);
+  }
+
+  
 }

@@ -1,0 +1,37 @@
+<ion-content class="ion-padding">
+
+  <!-- Sidebar (puedes poner esto en un componente si quieres reutilizarlo) -->
+  <div class="sidebar">
+    <div class="sidebar-item header">
+      <h5>Heading</h5>
+    </div>
+
+    <div *ngFor="let item of menuItems" class="sidebar-item">
+      <ion-icon name="star-outline"></ion-icon>
+      <div>
+        <div class="menu-title">Menu Label</div>
+        <div class="menu-description">Menu description.</div>
+      </div>
+    </div>
+
+    <div class="modo-oscuro">
+      <ion-icon name="moon-outline"></ion-icon>
+      <span>Modo oscuro</span>
+    </div>
+  </div>
+
+  <!-- Engranaje esquina superior derecha -->
+  <ion-icon name="settings" class="icon-settings"></ion-icon>
+
+  <!-- Ícono central -->
+  <div class="icon-center">
+    <ion-icon name="logo-usd" class="big-dollar-icon"></ion-icon>
+  </div>
+
+  <!-- Input inferior -->
+  <form class="consulta-form" (submit)="enviarConsulta()">
+    <input type="text" placeholder="Ingrese su consulta" [(ngModel)]="consulta" name="consulta" />
+    <button type="submit">Submit</button>
+  </form>
+
+</ion-content>

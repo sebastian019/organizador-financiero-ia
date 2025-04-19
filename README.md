@@ -75,7 +75,7 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 ---
 
 ## Prototipo de diseño 
-[Figma - Prototipo de Gestión de Productos](https://www.figma.com/design/bopd0b4wjxBKJ3s1oWh7rZ/Organizador-Financiero-con-IA?node-id=0-1&m=dev)
+[Figma - Prototipo de Organizador Financiero con IA](https://www.figma.com/design/bopd0b4wjxBKJ3s1oWh7rZ/Organizador-Financiero-con-IA?node-id=0-1&m=dev)
 
 ---
 ## Liberías usadas con Angular

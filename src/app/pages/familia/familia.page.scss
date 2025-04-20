@@ -15,6 +15,7 @@
 
   .title2 {
     text-align: center;
+    top: 40px;
     font-size: 48px;
     font-weight: bold;
   }
@@ -33,6 +34,35 @@
     top: 1px;      // hacia abajo
     right: 1px;   // hacia la derecha
   }
+
+  .trash-icon {
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 50%;        /* centra verticalmente */
+    left: 0;         /* pegado al borde izquierdo */
+    transform: translateY(-50%); /* ajusta para centrar el icono en el eje Y */
+    }
+
+    .list {
+        position: absolute;
+        --background: black;
+        --color: black;  
+        top: 50%;        /* centra verticalmente */
+        left: 100px;         /* pegado al borde izquierdo */
+        transform: translateY(-50%); /* ajusta para centrar el icono en el eje Y */
+    }
+
+    .add-button {
+        --background: white;         /* color de fondo */
+        --color: black;              /* color del icono */
+        border-radius: 50%;          /* redondo */
+        width: 45px;                 /* ancho fijo */
+        height: 45px;                /* alto fijo */ 
+        position: absolute;
+        top: 60%;        /* centra verticalmente */
+        left: 100px;         /* pegado al borde izquierdo */
+      }
   
   
   .main-circle {
@@ -81,4 +111,3 @@
     align-items: center;
     gap: 5px;
   }
-  

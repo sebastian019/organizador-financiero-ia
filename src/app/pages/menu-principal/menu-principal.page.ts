@@ -27,6 +27,10 @@ export class MenuPrincipalPage implements OnInit {
     this.router.navigate(['/opciones']);
   }  
 
+  irAFamilia() {
+    this.router.navigate(['/familia']);
+  }
+
   ngOnInit() {
   }
 

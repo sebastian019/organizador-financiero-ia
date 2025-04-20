@@ -13,7 +13,7 @@
 
 <ion-content class="ion-padding">
   <div class="dashboard-container">
-    <h2>BIENVENIDO “NOMBRE”</h2>
+    <ion-title class="title2">BIENVENIDO “NOMBRE”</ion-title>
 
     <div class="main-circle">
       <div class="dollar-symbol">$</div>
@@ -21,7 +21,7 @@
 
     <div class="button-grid">
       <div class="column">
-        <ion-button expand="block" class="side-button">FAMILIA</ion-button>
+        <ion-button expand="block" class="side-button" (click)="irAFamilia()">FAMILIA</ion-button>
         <ion-button expand="block" class="side-button" (click)="irAInversiones()">
           INVERSIONES
         </ion-button>

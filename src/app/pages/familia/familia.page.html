@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <img src="assets/tralalero.png" class="tralalero" />
+    <ion-title class="title">GEPETE ECONOMICS</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="clear">
+        <img src="assets/gear.png" class="gear-icon" (click)="irAOpciones()" />
+        <ion-icon name="settings" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="dashboard-container">
+    <ion-title class="title2">Nombre Familia</ion-title>
+
+    <div class="main-circle">
+      <div class="dollar-symbol">$</div>
+    </div>
+
+    <div class="button-grid">
+    </div>
+
+    <div class="lista">
+      <ion-list class="list" lines="none" fill="none">
+        <ion-item *ngFor="let miembro of miembros" (click)="irAMiembro()">
+          <ion-label>{{ miembro.nombre }}</ion-label>
+          <ion-button slot="end" fill="clear" (click)="editarMiembro()">
+            <ion-icon name="open-outline"></ion-icon>
+          </ion-button>
+          <ion-button slot="end" fill="clear" (click)="borrarMiembro()">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+      <ion-fab-button shape="circle" class="add-button" (click)="agregarMiembro()">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </div>
+
+    <div class="modo-oscuro">
+      <small>Modo oscuro</small>
+      <ion-icon name="moon-outline"></ion-icon>
+    </div>
+  </div>
+</ion-content>

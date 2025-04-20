@@ -23,7 +23,7 @@ export class SignInPage implements OnInit {
 
   login() {
     if (this.formulario.valid) {
-      //console.log(this.formulario.value); // simulás un inicio de sesión
+      //console.log(this.formulario.value);
       this.router.navigate(['/menu-principal']);
     }
     this.router.navigate(['/menu-principal']);

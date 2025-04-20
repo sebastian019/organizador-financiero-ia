@@ -19,6 +19,10 @@ export class GastosPage implements OnInit {
     this.router.navigate(['/lista-gastos']);
   }
 
+  irAMenuPrincipal(){
+    this.router.navigate(['/menu-principal']);
+  }
+
   ngOnInit() {
   }
 

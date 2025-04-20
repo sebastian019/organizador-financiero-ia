@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class ConsultaGptPage implements OnInit {
 
   // Lista ficticia para mostrar el menú en el HTML
-  menuItems = Array(10).fill({ label: 'Menu Label', description: 'Menu description.' });
+  menuItems = Array(2).fill({ label: 'Menu Label', description: 'Menu description.' });
 
   // Variable de consulta (aunque no se use realmente)
   consulta: string = '';
@@ -20,6 +20,10 @@ export class ConsultaGptPage implements OnInit {
   irAOpciones() {
     this.router.navigate(['/opciones']);
   }  
+
+  irAMenuPrincipal(){
+    this.router.navigate(['/menu-principal']);
+  }
 
   ngOnInit() {
     // Aquí no necesitas hacer nada por ahora

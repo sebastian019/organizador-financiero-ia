@@ -64,10 +64,20 @@
   
   .modo-oscuro {
     position: absolute;
-    bottom: 10px;
+    top: 10px;
     left: 10px;
+    font-size: 12px;
     display: flex;
     align-items: center;
     gap: 5px;
   }
+
+  .atras-button {
+    position: absolute;
+    width: 120px;
+    background-color: #2d2d2d;
+    color: white;
+    top: 90%;        /* abajo verticalmente */
+    left: 6%;         /* pegado al borde izquierdo */
+}
   

@@ -12,36 +12,40 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <div class="dashboard-container">
 
-  <!-- Sidebar (puedes poner esto en un componente si quieres reutilizarlo) -->
-  <div class="sidebar">
-    <div class="sidebar-item header">
-      <h5>Heading</h5>
-    </div>
-
-    <div *ngFor="let item of menuItems" class="sidebar-item">
-      <ion-icon name="star-outline"></ion-icon>
-      <div>
-        <div class="menu-title">Menu Label</div>
-        <div class="menu-description">Menu description.</div>
+    <div class="sidebar">
+      <div class="sidebar-item header">
+        <ion-title class="title2">Heading</ion-title>
+      </div>
+  
+      <div *ngFor="let item of menuItems" class="sidebar-item">
+        <ion-icon name="star-outline"></ion-icon>
+        <div>
+          <div class="menu-title">Menu Label</div>
+          <div class="menu-description">Menu description.</div>
+        </div>
       </div>
     </div>
 
+    <form class="consulta-form" (submit)="enviarConsulta()">
+      <input type="text" placeholder="Ingrese su consulta" [(ngModel)]="consulta" name="consulta" />
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="main-circle">
+      <div class="dollar-symbol">$</div>
+    </div>
+
     <div class="modo-oscuro">
+      <small>Modo oscuro</small>
       <ion-icon name="moon-outline"></ion-icon>
-      <span>Modo oscuro</span>
+    </div>
+
+    <div class="atras">
+      <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRAS</ion-button>
     </div>
   </div>
-
-  <!-- Ícono central -->
-  <div class="icon-center">
-    <ion-icon name="logo-usd" class="big-dollar-icon"></ion-icon>
-  </div>
-
-  <!-- Input inferior -->
-  <form class="consulta-form" (submit)="enviarConsulta()">
-    <input type="text" placeholder="Ingrese su consulta" [(ngModel)]="consulta" name="consulta" />
-    <button type="submit">Submit</button>
-  </form>
-
 </ion-content>
+
+

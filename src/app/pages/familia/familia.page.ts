@@ -21,11 +21,15 @@ export class FamiliaPage implements OnInit {
     this.router.navigate(['/opciones']);
   }  
 
+  irAMenuPrincipal(){
+    this.router.navigate(['/menu-principal']);
+  }
+
   agregarMiembro(){
 
   }
   editarMiembro(){
-    
+
   }
 
   borrarMiembro(){

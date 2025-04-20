@@ -13,6 +13,10 @@ export class RegisterPage implements OnInit {
 
   constructor(private fb: FormBuilder, private router: Router) {}
 
+  irAHome() {
+    this.router.navigate(['/home']);
+  }
+
   ngOnInit() {
     this.formulario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],

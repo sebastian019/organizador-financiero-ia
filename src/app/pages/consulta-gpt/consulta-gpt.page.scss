@@ -9,11 +9,11 @@
   
   .side-bar {
   position: absolute;     // o "fixed" si querés que quede ahí aunque haya scroll
-  top: 20px;              // margen superior
+  top: 60px;              // margen superior
   left: 20px;             // margen izquierdo
   width: 200px;
   padding: 10px;
-  background: white;
+  background: rgb(36, 35, 35);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // opcional, para que se vea más como un panel flotante
   z-index: 5;             // opcional, para asegurarte de que quede por encima si lo necesitás
   }
@@ -89,7 +89,7 @@
     align-items: center;
     justify-content: center;
     font-size: 48px;
-    margin: 120px 0;
+    margin: 250px 0;
   }
   
   .dollar-symbol {

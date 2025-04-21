@@ -15,13 +15,13 @@ export class BotonesInicioComponent implements OnInit {
 
   // Función para el botón "Iniciar sesión"
   iniciarSesion() {
-    console.log('Iniciar sesión');
+    //console.log('Iniciar sesión');
     this.router.navigate(['/sign-in']);
   }
 
   // Función para el segundo botón
   registrarse() {
-    console.log('Registrarce');
+    //console.log('Registrarce');
     this.router.navigate(['/register']);
   }
 

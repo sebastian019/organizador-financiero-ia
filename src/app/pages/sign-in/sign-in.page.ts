@@ -17,15 +17,15 @@ export class SignInPage implements OnInit {
   ngOnInit() {
     this.formulario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
   login() {
-    if (this.formulario.valid) {
+    /*if (this.formulario.valid) {
       //console.log(this.formulario.value);
       this.router.navigate(['/menu-principal']);
-    }
+    }*/
     this.router.navigate(['/menu-principal']);
   }
 }

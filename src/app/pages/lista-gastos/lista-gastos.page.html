@@ -4,7 +4,7 @@
     <ion-title class="title">GEPETE ECONOMICS</ion-title>
     <ion-buttons slot="end">
       <ion-button fill="clear">
-        <img src="assets/gear.png" class="gear-icon" />
+        <img src="assets/gear.png" class="gear-icon" (click)="irAOpciones()" />
         <ion-icon name="settings" slot="icon-only"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -21,7 +21,7 @@
       </ion-list>
     </div>
 
-    <ion-button class="gastos-btn">
+    <ion-button class="gastos-btn" (click)="irConsultaGpt()">
       Hacer consulta sobre gastos
     </ion-button>
 

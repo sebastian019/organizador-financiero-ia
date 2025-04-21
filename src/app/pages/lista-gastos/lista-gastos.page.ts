@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-gastos',
@@ -21,7 +22,15 @@ export class ListaGastosPage implements OnInit {
     'Gasto 11'
   ];
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  irAOpciones() {
+    this.router.navigate(['/opciones']);
+  }  
+  
+  irConsultaGpt() {
+    this.router.navigate(['/consulta-gpt']);
+  }
 
   ngOnInit() {
   }

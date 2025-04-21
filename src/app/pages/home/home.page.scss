@@ -1,67 +1,78 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  
-  ion-button {
-    margin: 10px;
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    background-color: white; // Fondo blanco como en el prototipo
-  }
-  
-  ion-title {
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: white;
+}
+
+ion-button {
+  margin: 10px;
+}
+
+ion-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column; // en móvil, uno debajo del otro
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.login-button,
+.register-button {
+  width: 80%; // más adaptable en móvil
+  max-width: 300px;
+  height: 50px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+}
+
+.login-button:hover,
+.register-button:hover {
+  background-color: #0056b3;
+}
+
+.tralalero {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+/* Estilos para pantallas más grandes (tablet, escritorio) */
+@media (min-width: 768px) {
   .button-container {
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
+    padding: 40px;
   }
-  
-  .login-button {
-    width: 150px;
-    height: 50px;
-    font-size: 18px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-  }
-  
+
+  .login-button,
   .register-button {
     width: 150px;
-    height: 50px;
     font-size: 18px;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
   }
-  
-  
-  .login-button:hover, .register-button:hover {
-    background-color: #0056b3; // Color de fondo al pasar el mouse
+
+  ion-title {
+    font-size: 32px;
   }
-  
+
   .tralalero {
-    position: absolute;
-    top: -5px;
-    left: 5px;
     width: 80px;
     height: 80px;
   }
+}
   
   /*.dark-mode-toggle {
     position: absolute;

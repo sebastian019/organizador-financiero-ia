@@ -5,112 +5,178 @@
   justify-content: space-between;
   text-align: center;
   height: 100%;
+  padding: 16px;
+  position: relative;
 }
-  
+
+.side-bar {
+  position: absolute;
+  --background: black;
+  --color: black;
+  top: 20%;
+  left: 35%;
+  transform: translateY(-50%);
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10%;
+  font-size: 14px;
+}
+
+.title {
+  text-align: center;
+  margin-left: 65px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tralalero {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 60px;
+}
+
+.gear-icon {
+  width: 60px;
+  height: 24px;
+  position: relative;
+  top: 1px;
+  right: 1px;
+}
+
+.icon-settings {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+}
+
+.menu-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.menu-description {
+  font-size: 12px;
+  color: gray;
+}
+
+.modo-oscuro {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.atras-button {
+  position: absolute;
+  width: 100px;
+  background-color: #2d2d2d;
+  color: white;
+  top: 90%;
+  left: 6%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.main-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 8px solid #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-top: 230px;
+}
+
+.dollar-symbol {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.consulta-form {
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  max-width: 100%;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+}
+
+ion-content {
+  position: relative;
+}
+
+/* Pantallas grandes (≥768px) */
+@media (min-width: 768px) {
   .side-bar {
-  position: absolute;     // o "fixed" si querés que quede ahí aunque haya scroll
-  top: 60px;              // margen superior
-  left: 20px;             // margen izquierdo
-  width: 200px;
-  padding: 10px;
-  background: rgb(36, 35, 35);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); // opcional, para que se vea más como un panel flotante
-  z-index: 5;             // opcional, para asegurarte de que quede por encima si lo necesitás
+    left: 20px;
+    width: 200px;
   }
 
   .sidebar-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10%;
+    font-size: 16px;
   }
 
   .title {
-    text-align: center;
     font-size: 24px;
-    font-weight: bold;
   }
 
   .tralalero {
-    position: absolute;
-    top: -5px;
-    left: 5px;
     width: 80px;
   }
 
   .gear-icon {
     width: 100px;
     height: 30px;
-    position: relative;
-    top: 1px;      // hacia abajo
-    right: 1px;   // hacia la derecha
-  }
-  
-  .menu-title {
-    font-weight: bold;
-  }
-  
-  .menu-description {
-    font-size: 12px;
-    color: gray;
-  }
-  
-  .modo-oscuro {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
   }
 
-  .atras-button {
-    position: absolute;
-    width: 120px;
-    background-color: #2d2d2d;
-    color: white;
-    top: 90%;        /* abajo verticalmente */
-    left: 6%;         /* pegado al borde izquierdo */
-}
-  
   .icon-settings {
-    position: absolute;
-    top: 10px;
-    right: 10px;
     font-size: 32px;
   }
-  
+
   .main-circle {
     width: 350px;
     height: 350px;
-    border-radius: 50%;
-    border: 10px solid #2d2d2d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 48px;
-    margin: 250px 0;
+    border: 10px solid #2d2d2d;
   }
-  
+
   .dollar-symbol {
     font-size: 128px;
-    font-weight: bold;
   }
-  
+
   .consulta-form {
     position: absolute;
     bottom: 20px;
     left: 450px;
-    display: flex;
-    gap: 5px;
-  }
-  
-  input {
-    width: 1000px;
-    padding: 5px;
+    flex-direction: row;
+    width: auto;
   }
 
-  ion-content{
-    position: relative;
+  input {
+    width: 1000px;
   }
+
+  .atras-button {
+    width: 120px;
+    font-size: 16px;
+  }
+}
+
   

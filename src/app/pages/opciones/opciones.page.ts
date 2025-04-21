@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-opciones',
@@ -8,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpcionesPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  irAMenuPrincipal(){
+    this.router.navigate(['/menu-principal']);
+  }
 
   ngOnInit() {
   }

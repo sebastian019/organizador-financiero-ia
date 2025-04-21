@@ -1,83 +1,116 @@
 .upload-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    text-align: center;
-    gap: 20px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  gap: 20px;
+  padding: 16px;
+}
 
+.title {
+  text-align: center;
+  margin-left: 65px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.tralalero {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 60px;
+}
+
+.gear-icon {
+  width: 60px;
+  height: 24px;
+  position: relative;
+  top: 1px;
+  right: 1px;
+}
+
+.upload-box {
+  background-color: #777;
+  color: #333;
+  width: 80%;
+  max-width: 300px;
+  height: 200px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.upload-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.consulta-gpt-button {
+  font-size: 14px;
+  padding: 6px 10px;
+  height: auto;
+  min-width: 80px;
+  max-width: 150px;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  width: auto;
+  margin-top: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modo-oscuro {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.atras-button {
+  position: absolute;
+  width: 100px;
+  background-color: #2d2d2d;
+  color: white;
+  top: 90%;
+  left: 6%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+/* Pantallas grandes (≥768px) */
+@media (min-width: 768px) {
   .title {
-    text-align: center;
     font-size: 24px;
-    font-weight: bold;
   }
 
-  .tralalero {
-    position: absolute;
-    top: -5px;
-    left: 5px;
-    width: 80px;
-  }
-
-  .gear-icon {
-    width: 100px;
-    height: 30px;
-    position: relative;
-    top: 1px;      // hacia abajo
-    right: 1px;   // hacia la derecha
-  }
-  
   .upload-box {
-    background-color: #777;
-    color: #333;
     width: 300px;
-    height: 200px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
-  
+
   .upload-icon {
     font-size: 48px;
-    margin-bottom: 10px;
   }
 
   .consulta-gpt-button {
-    font-size: 14px;
-    padding: 6px 10px; 
-    height: auto;
-    min-width: 80px; 
-    max-width: 150px; 
-    color: white; 
-    text-align: center; 
-    border-radius: 8px; 
-    width: auto; 
-    margin-top: 30px; 
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto; 
-  }
-  
-  .modo-oscuro {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    font-size: 16px;
+    padding: 8px 12px;
   }
 
   .atras-button {
-    position: absolute;
     width: 120px;
-    background-color: #2d2d2d;
-    color: white;
-    top: 90%;        /* abajo verticalmente */
-    left: 6%;         /* pegado al borde izquierdo */
+    font-size: 16px;
+  }
 }
+
   

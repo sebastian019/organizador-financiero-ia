@@ -1,49 +1,83 @@
 .opciones-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-top: 50px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+  padding: 0 16px;
+}
+
+.option-button {
+  width: 100%;
+  max-width: 250px;
+  height: 60px;
+  background-color: #2d2d2d;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 8px;
+}
+
+.atras-button {
+  position: absolute;
+  width: 80%;
+  max-width: 120px;
+  background-color: #2d2d2d;
+  color: white;
+  top: 90%;
+  left: 6%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.tralalero {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 50px;
+}
+
+.modo-oscuro {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Estilos para pantallas grandes */
+@media (min-width: 768px) {
   .option-button {
     width: 250px;
-    height: 60px;
-    background-color: #2d2d2d;
-    color: white;
-    font-weight: bold;
+    font-size: 18px;
+  }
+
+  .atras-button {
+    width: 120px;
     font-size: 16px;
+    left: 1%;
   }
-  
-  .back-button {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 80px;
-    background-color: #2d2d2d;
-    color: white;
-  }
-  
+
   .title {
-    text-align: center;
     font-size: 24px;
-    font-weight: bold;
   }
-  
+
   .tralalero {
-    position: absolute;
-    top: -5px;
-    left: 5px;
     width: 60px;
   }
-  
+
   .modo-oscuro {
-    position: absolute;
-    bottom: 10px;
     left: 110px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
   }
-  
+}

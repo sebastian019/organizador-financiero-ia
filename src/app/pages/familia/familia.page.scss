@@ -1,122 +1,182 @@
 .dashboard-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
-    height: 100%;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+  padding: 16px;
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  margin-left: 65px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.title2 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: -200px;
+}
+
+.tralalero {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 60px;
+}
+
+.gear-icon,
+.trash-icon {
+  width: 60px;
+  height: 24px;
+}
+
+.trash-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.list {
+  position: absolute;
+  --background: black;
+  --color: black;
+  top: 30%;
+  left: 30px;
+  transform: translateY(-50%);
+}
+
+.add-button {
+  --background: black;
+  --color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 40%;
+  left: 30px;
+}
+
+.atras-button {
+  position: absolute;
+  width: 100px;
+  background-color: #2d2d2d;
+  color: white;
+  top: 90%;
+  left: 6%;
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.main-circle {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 8px solid #2d2d2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin: 100px 0;
+}
+
+.dollar-symbol {
+  font-size: 64px;
+  font-weight: bold;
+}
+
+.button-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.side-button {
+  width: 100px;
+  background-color: #2d2d2d;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.modo-oscuro {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Pantallas grandes (≥768px) */
+@media (min-width: 768px) {
   .title {
-    text-align: center;
     font-size: 24px;
-    font-weight: bold;
   }
 
   .title2 {
-    text-align: center;
-    top: 40px;
     font-size: 48px;
-    font-weight: bold;
   }
-  
+
   .tralalero {
-    position: absolute;
-    top: -5px;
-    left: 5px;
     width: 80px;
   }
 
-  .gear-icon {
-    width: 100px;
-    height: 30px;
-    position: relative;
-    top: 1px;      // hacia abajo
-    right: 1px;   // hacia la derecha
-  }
-
+  .gear-icon,
   .trash-icon {
     width: 100px;
     height: 30px;
-    position: absolute;
-    top: 50%;        /* centra verticalmente */
-    left: 0;         /* pegado al borde izquierdo */
-    transform: translateY(-50%); /* ajusta para centrar el icono en el eje Y */
-    }
+  }
 
-    .list {
-        position: absolute;
-        --background: black;
-        --color: black;  
-        top: 50%;        /* centra verticalmente */
-        left: 100px;         /* pegado al borde izquierdo */
-        transform: translateY(-50%); /* ajusta para centrar el icono en el eje Y */
-    }
+  .add-button {
+    width: 45px;
+    height: 45px;
+    left: 100px;
+  }
 
-    .add-button {
-        --background: white;         /* color de fondo */
-        --color: black;              /* color del icono */
-        border-radius: 50%;          /* redondo */
-        width: 45px;                 /* ancho fijo */
-        height: 45px;                /* alto fijo */ 
-        position: absolute;
-        top: 60%;        /* centra verticalmente */
-        left: 100px;         /* pegado al borde izquierdo */
-    }
+  .list {
+    left: 100px;
+  }
 
-    .atras-button {
-        position: absolute;
-        width: 120px;
-        background-color: #2d2d2d;
-        color: white;
-        top: 90%;        /* centra verticalmente */
-        left: 6%;         /* pegado al borde izquierdo */
-    }
-  
-  
   .main-circle {
     width: 350px;
     height: 350px;
-    border-radius: 50%;
-    border: 10px solid #2d2d2d;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 48px;
     margin: 120px 0;
   }
-  
+
   .dollar-symbol {
     font-size: 128px;
-    font-weight: bold;
   }
-  
+
   .button-grid {
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    width: 100%;
     max-width: 600px;
-    margin-top: 20px;
   }
-  
-  .column {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
+
   .side-button {
     width: 120px;
-    background-color: #2d2d2d;
-    color: white;
   }
-  
-  .modo-oscuro {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
+
+  .atras-button {
+    width: 120px;
+    font-size: 16px;
   }
+}

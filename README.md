@@ -61,16 +61,16 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
   - Compatible con los navegadores:
     - Google Chrome
     - Mozilla Firefox
-    - Microsoft Edge
-    - Safari
 
 - **RNF-05: Escalabilidad**
-  - No se que poner acá
+  - Utilizar plataformas en la nube (por ejemplo, Azure o AWS) para ajustar recursos automáticamente según la demanda.
+  - Capacidad para agregar servidores adicionales en caso de aumento de usuarios o transacciones, sin necesidad de reestructuración significativa.
+
 
 ---
 
 ## Arquitectura de la Información 
-[Estructura de Navegación](https://whimsical.com/escuelainf-4qgXnPptro4CqvEugsGNNZ )
+[Estructura de Navegación](https://drive.google.com/file/d/12JX6iKR68vtPhD2Qest-U5z9Oqw1jnnR/view?usp=sharing)
 
 ---
 
@@ -79,13 +79,12 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 
 ---
 ## Liberías usadas con Angular
-- Bootstrap
+- chart.js (Implementación a futuro) 
+- Fomrs
 
 ## Tecnologías
 - **Ionic Framework** (v7+)
 - **Angular** (v15+)
 - **TypeScript**
-- **Capacitor** (para plugins nativos, si aplica)
-- **SASS** (para estilos)
-- **RxJS** (para manejo reactivo)
 - **Angular Router** (para navegación entre vistas)
+- Visual Studio Code

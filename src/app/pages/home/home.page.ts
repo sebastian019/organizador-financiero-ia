@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 
@@ -13,13 +14,16 @@ import { NavController } from '@ionic/angular';
 
 
 export class HomePage {
-    constructor(private navCtrl: NavController) {}
+    constructor(private router: Router) { }
   
     iniciarSesion() {
-      // Lógica para iniciar sesión
-    }
-  
-    registrarse() {
-      //this.navCtrl.navigateForward('/register'); Lógica para registrarse
-    }
+    //console.log('Iniciar sesión');
+    this.router.navigate(['/sign-in']);
+  }
+
+  // Función para el segundo botón
+  registrarse() {
+    //console.log('Registrarce');
+    this.router.navigate(['/register']);
+  }
 }

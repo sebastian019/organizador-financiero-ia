@@ -29,9 +29,4 @@ export class BotonesInicioComponent implements OnInit {
     console.log('Ingresar');
     this.router.navigate(['/ingresar']);
   }*/
-  irAInversiones() {
-    this.router.navigate(['/inversiones']);
-  }
-
-  
 }

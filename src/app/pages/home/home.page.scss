@@ -2,44 +2,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100%;
-  background-color: white;
-}
-
-ion-button {
-  margin: 10px;
-}
-
-ion-title {
+  justify-content: space-between;
   text-align: center;
-  font-size: 24px;
+  height: 100%;
+  padding: 16px;
+  position: relative;
+}
+
+.title {
+  text-align: center;
+  margin-left: 5px;
+  font-size: 20px;
   font-weight: bold;
 }
 
-.button-container {
+.botones-container {
   display: flex;
-  flex-direction: column; // en móvil, uno debajo del otro
-  gap: 15px;
-  align-items: center;
-  width: 100%;
-  padding: 20px;
-}
-
-.login-button,
-.register-button {
-  width: 80%; // más adaptable en móvil
-  max-width: 300px;
-  height: 50px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-}
-
-.login-button:hover,
-.register-button:hover {
-  background-color: #0056b3;
+  justify-content: center;   /* Centra los botones horizontalmente */
+  align-items: center;       /* Centra los botones verticalmente */
+  gap: 16px;                 /* Espacio entre los botones */
+  margin-top: 20px;          /* Ajuste de margen superior */
+  flex-wrap: wrap;           /* Los botones se ajustarán en pantallas pequeñas */
+  height: 90%;              /* Asegura que el contenedor ocupe toda la altura disponible */
 }
 
 .tralalero {
@@ -58,13 +42,7 @@ ion-title {
     padding: 40px;
   }
 
-  .login-button,
-  .register-button {
-    width: 150px;
-    font-size: 18px;
-  }
-
-  ion-title {
+  .title {
     font-size: 32px;
   }
 

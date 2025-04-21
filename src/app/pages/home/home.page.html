@@ -1,11 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>GEPETE ECONOMICS</ion-title>
+    <ion-title class = "title">GEPETE ECONOMICS</ion-title>
     <img src="assets/tralalero.png" class="tralalero">
     <!-- <ion-toggle class="dark-mode-toggle"></ion-toggle>-->
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <app-botones-inicio></app-botones-inicio>
+  <div class="botones-container">
+    <ion-button (click)="iniciarSesion()" expand="full" color="light">Iniciar sesión</ion-button>
+    <ion-button (click)="registrarse()" expand="full" color="light">Registrarse </ion-button>
+  </div>
 </ion-content>

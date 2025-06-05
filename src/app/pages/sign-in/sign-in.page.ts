@@ -45,6 +45,6 @@ export class SignInPage implements OnInit {
   }
 
   irAHome() {
-    this.router.navigate(['/menu-principal']); // o la ruta de inicio que tengas
+    this.router.navigate(['/home']); // o la ruta de inicio que tengas
   }
 }

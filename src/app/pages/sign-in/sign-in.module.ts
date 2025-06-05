@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SignInPageRoutingModule } from './sign-in-routing.module';
 
 import { SignInPage } from './sign-in.page';
+import { HeaderComponent } from '../../components/header/header.component'
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { SignInPage } from './sign-in.page';
     FormsModule,
     IonicModule,
     SignInPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HeaderComponent
   ],
   declarations: [SignInPage]
 })

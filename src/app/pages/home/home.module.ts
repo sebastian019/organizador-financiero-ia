@@ -8,13 +8,15 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { BotonesInicioComponent } from '../../components/botones-inicio/botones-inicio.component';
+import { HeaderComponent } from '../../components/header/header.component'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    HeaderComponent
   ],
   declarations: [HomePage,BotonesInicioComponent],
 })

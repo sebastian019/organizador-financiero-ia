@@ -1,8 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Iniciar Sesión</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [showMenuButton]="false"></app-header>
 
 <ion-content class="ion-padding">
   <form [formGroup]="formulario" (ngSubmit)="login()">

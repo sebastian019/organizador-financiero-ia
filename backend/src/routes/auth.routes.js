@@ -5,7 +5,7 @@ const { register, login } = require('../controllers/auth.controller');
 router.post('/register', register);
 router.post('/login', login);
 
-module.exports = router;
+
 
 const verifyToken = require('../middlewares/auth.middleware');
 
@@ -15,3 +15,5 @@ router.get('/profile', verifyToken, (req, res) => {
     user: req.user
   });
 });
+
+module.exports = router;

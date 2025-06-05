@@ -1,0 +1,55 @@
+// Ruta: src/app/components/header/header.component.scss
+.main-header-component {
+  ion-toolbar {
+    --color: #ffffff; 
+    position: relative; 
+    padding: 0 8px;
+  }
+
+  .tralalero-logo {
+    margin-top: 0px; 
+    margin-left: 8px; 
+    width: 40px;  
+    height: 40px; 
+    cursor: pointer;
+    display: block; 
+  }
+
+  .header-main-title { 
+    text-align: center;
+    font-size: 1.2em; 
+    font-weight: bold;
+    color: var(--ion-toolbar-color, #fff); 
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 60px;  
+    padding-right: 60px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal; 
+  }
+
+  .menu-button { // Si renombraste la clase del botón
+    --color: var(--ion-toolbar-color, #fff); 
+  }
+}
+
+@media (min-width: 768px) {
+  .main-header-component {
+    .header-main-title {
+      font-size: 1.5em; 
+      padding-left: 100px;  
+      padding-right: 100px; 
+    }
+
+    .tralalero-logo {
+      width: 50px;  
+      height: 50px;
+      margin-left: 16px;
+    }
+  }
+}

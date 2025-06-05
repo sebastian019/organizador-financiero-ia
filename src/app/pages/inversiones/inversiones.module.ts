@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { InversionesPageRoutingModule } from './inversiones-routing.module';
 
 import { InversionesPage } from './inversiones.page';
+import { HeaderComponent } from '../../components/header/header.component'
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InversionesPageRoutingModule
+    InversionesPageRoutingModule,
+    HeaderComponent
   ],
   declarations: [InversionesPage]
 })

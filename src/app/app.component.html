@@ -1,9 +1,42 @@
 <ion-app>
-  <app-header></app-header>
-  <ion-content>
+  <ion-menu side="end" contentId="main-app-content" menuId="main-options-menu">
+    <ion-header>
+      <ion-toolbar color="light"> <ion-title>Opciones del Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list lines="none">
+        <ion-menu-toggle auto-hide="false" menu="main-options-menu">
+          <ion-item button (click)="navigateTo('/menu-principal')">
+            <ion-icon slot="start" name="home-outline"></ion-icon>
+            <ion-label>Inicio</ion-label>
+          </ion-item>
+          <ion-item button (click)="navigateTo('/gastos')">
+            <ion-icon slot="start" name="wallet-outline"></ion-icon>
+            <ion-label>Gastos</ion-label>
+          </ion-item>
+          <ion-item button (click)="navigateTo('/inversiones')">
+            <ion-icon slot="start" name="trending-up-outline"></ion-icon>
+            <ion-label>Inversiones</ion-label>
+          </ion-item>
+          <ion-item button (click)="navigateTo('/familia')">
+            <ion-icon slot="start" name="people-outline"></ion-icon>
+            <ion-label>Familia</ion-label>
+          </ion-item>
+          <ion-item button (click)="navigateTo('/consulta-gpt')">
+            <ion-icon slot="start" name="chatbubbles-outline"></ion-icon>
+            <ion-label>Consulta GPT</ion-label>
+          </ion-item>
+          <ion-item button (click)="navigateTo('/opciones')">
+            <ion-icon slot="start" name="settings-outline"></ion-icon>
+            <ion-label>Opciones</ion-label>
+          </ion-item>
+          </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
-  <ion-router-outlet></ion-router-outlet>
-  
-  </ion-content> 
-  <app-footer></app-footer>
+  <div class="ion-page" id="main-app-content"> 
+    <ion-router-outlet></ion-router-outlet>
+  </div>
 </ion-app>

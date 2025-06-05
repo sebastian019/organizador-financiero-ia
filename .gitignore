@@ -68,3 +68,8 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Archivos sensibles y de base de datos (backend)
+.env
+prisma/dev.db
+backend/prisma/dev.db

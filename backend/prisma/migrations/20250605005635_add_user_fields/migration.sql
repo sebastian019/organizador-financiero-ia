@@ -1,0 +1,4 @@
+-- AlterTable
+ALTER TABLE "User" ADD COLUMN "comuna" TEXT;
+ALTER TABLE "User" ADD COLUMN "region" TEXT;
+ALTER TABLE "User" ADD COLUMN "rut" TEXT;

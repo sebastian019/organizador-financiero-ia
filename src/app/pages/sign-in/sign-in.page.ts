@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,26 +10,41 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class SignInPage implements OnInit {
-  formulario!: FormGroup;
+  formulario: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
-
-  irAHome() {
-    this.router.navigate(['/home']);
-  }
-
-  ngOnInit() {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.formulario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
+  ngOnInit() {}
+
   login() {
-    /*if (this.formulario.valid) {
-      //console.log(this.formulario.value);
-      this.router.navigate(['/menu-principal']);
-    }*/
-    this.router.navigate(['/menu-principal']);
+    if (this.formulario.invalid) {
+      return;
+    }
+
+    const { email, password } = this.formulario.value;
+
+    this.authService.login(email, password).subscribe({
+      next: (res) => {
+        this.authService.saveToken(res.token);
+        this.router.navigate(['/menu-principal']); // Cambia a la ruta real de tu página principal
+      },
+      error: (err) => {
+        alert('Credenciales incorrectas');
+        console.error(err);
+      }
+    });
+  }
+
+  irAHome() {
+    this.router.navigate(['/menu-principal']); // o la ruta de inicio que tengas
   }
 }

@@ -2,50 +2,33 @@
 
 <ion-content class="ion-padding">
   <div class="inversiones-container">
-    <!-- Sección de las acciones -->
+    <!-- Lista de acciones -->
     <div class="acciones-lista">
-      <h3>Acciones del mercado</h3>
+      <h3 class="titulo-acciones">ACCIONES DEL MERCADO</h3>
       <ion-list>
-        <ion-item *ngFor="let accion of acciones">
+        <ion-item *ngFor="let accion of acciones" (click)="abrirModal(accion)">
           <ion-label>
             {{ accion.nombre }}
-          </ion-label>
-          <ion-label
-            slot="end"
-            [color]="accion.cambio > 0 ? 'success' : accion.cambio < 0 ? 'danger' : 'medium'"
-            class="porcentaje"
-          >
-            {{ accion.cambio >= 0 ? '+' : '' }}{{ accion.cambio }}%
+            <p *ngIf="accion.precio !== null && accion.cambio !== null">
+              ${{ accion.precio.toFixed(2) }} |
+              <span [style.color]="accion.cambio > 0 ? 'green' : accion.cambio < 0 ? 'red' : 'gray'">
+                {{ accion.cambio >= 0 ? '+' : '' }}{{ accion.cambio.toFixed(2) }}%
+              </span>
+            </p>
+            <p *ngIf="accion.precio === null || accion.cambio === null">Cargando datos...</p>
           </ion-label>
         </ion-item>
       </ion-list>
-
-      <!-- Botón Invertir centrado -->
-      <div class="boton-invertir-wrapper">
-        <ion-button expand="block" class="boton-invertir">INVERTIR</ion-button>
-      </div>
-    </div>
-
-    <!-- Sección de los fondos mutuos -->
-    <div class="fondos-grafico">
-      <h3>Fondos Mutuos</h3>
-      <div class="grafico-placeholder">
-        <!-- Imagen de fluctuaciones de fondo -->
-        <img src="assets/grafico-fondo-1.png" alt="Gráfico Fondo 1">
-      </div>
-      <div class="flechas">
-        <ion-button (click)="anteriorFondo()">Anterior</ion-button>
-        <ion-button (click)="siguienteFondo()">Siguiente</ion-button>
-      </div>
     </div>
   </div>
 
-  <!-- Botón Consulta GPT -->
+  <!-- Consulta GPT -->
   <div class="consulta-gpt-container">
     <ion-button expand="block" class="consulta-gpt-button" (click)="irConsultaGpt()">CONSULTA GPT</ion-button>
   </div>
 
+  <!-- Botón Atrás -->
   <div class="atras">
-    <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRAS</ion-button>
+    <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRÁS</ion-button>
   </div>
 </ion-content>

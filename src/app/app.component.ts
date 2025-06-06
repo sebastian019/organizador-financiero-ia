@@ -10,11 +10,11 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule si usas 
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  standalone: true, // ¡CLAVE!
+  //standalone: true, // ¡CLAVE!
   imports: [
     IonicModule,      // Para todos los componentes ion-*
     CommonModule,     // Para directivas como *ngIf, *ngFor
-    RouterModule      // Para <ion-router-outlet> y directivas de enrutamiento
+    RouterModule,      // Para <ion-router-outlet> y directivas de enrutamiento
     // HeaderComponent // Solo si <app-header> estuviera directamente en app.component.html
                       // y no dentro de las páginas que carga el router-outlet.
   ]

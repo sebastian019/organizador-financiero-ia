@@ -11,12 +11,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { BotonesInicioComponent } from './components/botones-inicio/botones-inicio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalGraficoComponent } from './modal-grafico/modal-grafico.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 
 
 @NgModule({
-  declarations: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,HttpClientModule],
+  declarations: [ModalGraficoComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,HttpClientModule,NgChartsModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Agregar esta línea
   bootstrap: [AppComponent],

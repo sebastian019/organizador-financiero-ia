@@ -8,12 +8,14 @@ import { InversionesPageRoutingModule } from './inversiones-routing.module';
 
 import { InversionesPage } from './inversiones.page';
 import { HeaderComponent } from '../../components/header/header.component'
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    NgChartsModule,
     InversionesPageRoutingModule,
     HeaderComponent
   ],

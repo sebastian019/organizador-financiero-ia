@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ accion?.nombre }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="datosCargados">
+    <canvas baseChart
+      [data]="lineChartData"
+      [type]="lineChartType"
+      [options]="lineChartOptions">
+    </canvas>
+  </div>
+  <ion-spinner *ngIf="!datosCargados"></ion-spinner>
+</ion-content>

@@ -1,179 +1,52 @@
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  height: 100%;
-  padding: 16px;
-  position: relative;
-}
-
-.side-bar {
-  position: absolute;
-  --background: black;
-  --color: black;
-  top: 20%;
-  left: 30%;
-  transform: translateY(-50%);
-}
-
-.sidebar-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10%;
-  margin-left: 20%;
-  font-size: 14px;
-}
-
-
-
-.title2 {
-  text-align: center;
-  margin-left: -25%;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-
-
-.gear-icon {
-  width: 60px;
-  height: 24px;
-  position: relative;
-  top: 1px;
-  right: 1px;
-}
-
-.icon-settings {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 24px;
-}
-
-.menu-title {
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.menu-description {
-  font-size: 12px;
-  color: gray;
-}
-
-.modo-oscuro {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.atras-button {
-  position: absolute;
-  width: 100px;
-  color: white;
-  top: 90%;
-  left: 6%;
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 5px;
-}
-
-.main-circle {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 8px solid #2d2d2d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  margin-top: 230px;
-}
-
-.dollar-symbol {
-  font-size: 64px;
-  font-weight: bold;
-}
-
-.consulta-form {
-  margin-top: 20%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 90%;
-  max-width: 100%;
-}
-
-input {
-  width: 100%;
-  padding: 8px;
-  font-size: 14px;
-}
+// src/app/pages/consulta-gpt/consulta-gpt.page.scss
 
 ion-content {
-  position: relative;
+  // Variable para el fondo del chat
+  --background: #f4f5f8;
 }
 
-/* Pantallas grandes (≥768px) */
-@media (min-width: 768px) {
-  .side-bar {
-    left: 20px;
-    width: 200px;
-  }
-
-  .sidebar-item {
-    font-size: 16px;
-  }
-
-  .title {
-    font-size: 24px;
-  }
-
-  .tralalero {
-    width: 80px;
-  }
-
-  .gear-icon {
-    width: 100px;
-    height: 30px;
-  }
-
-  .icon-settings {
-    font-size: 32px;
-  }
-
-  .main-circle {
-    width: 350px;
-    height: 350px;
-    font-size: 48px;
-    border: 10px solid #2d2d2d;
-  }
-
-  .dollar-symbol {
-    font-size: 128px;
-  }
-
-  .consulta-form {
-    position: absolute;
-    bottom: 20px;
-    left: 450px;
-    flex-direction: row;
-    width: auto;
-  }
-
-  input {
-    width: 1000px;
-  }
-
-  .atras-button {
-    width: 120px;
-    font-size: 16px;
-  }
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; // Espacio entre mensajes
+  padding-bottom: 10px; // Espacio extra al final
 }
 
+.chat-message {
+  padding: 10px 15px;
+  border-radius: 20px;
+  max-width: 85%;
+  word-wrap: break-word; // Para que el texto largo no se salga de la burbuja
   
+  p {
+    margin: 0; // Quita el margen por defecto de los párrafos
+  }
+}
+
+.user-message {
+  background-color: var(--ion-color-primary); // Usa el color primario de tu app
+  color: var(--ion-color-primary-contrast);
+  align-self: flex-end; // Alinea los mensajes del usuario a la derecha
+  border-bottom-right-radius: 4px;
+}
+
+.bot-message {
+  background-color: #ffffff; // Un fondo blanco para el bot
+  color: #333333;
+  align-self: flex-start; // Alinea los mensajes del bot a la izquierda
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); // Una sombra sutil
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: #ffffff;
+    padding: 5px 0;
+  }
+  ion-item {
+    --background: #f4f5f8;
+    --border-radius: 25px;
+    --padding-start: 10px;
+    margin: 0 10px;
+  }
+}

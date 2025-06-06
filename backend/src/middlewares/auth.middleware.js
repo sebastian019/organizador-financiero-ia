@@ -1,22 +1,27 @@
+// backend/src/middlewares/auth.middleware.js
 const jwt = require('jsonwebtoken');
 
 const SECRET = process.env.JWT_SECRET || 'secretoSuperSeguro';
 
 const verifyToken = (req, res, next) => {
   const authHeader = req.headers['authorization'];
+  console.log('🛡️ Verificando token:', authHeader);
 
-  // El token debe venir en el formato: Bearer <token>
   const token = authHeader && authHeader.split(' ')[1];
-
-  if (!token) return res.status(401).json({ error: 'Token no proporcionado' });
+  if (!token) {
+    console.log('❌ Token no proporcionado');
+    return res.status(401).json({ error: 'Token no proporcionado' });
+  }
 
   jwt.verify(token, SECRET, (err, user) => {
-    if (err) return res.status(403).json({ error: 'Token inválido' });
-
-    // Agregar los datos del usuario a la request
+    if (err) {
+      console.log('❌ Token inválido');
+      return res.status(403).json({ error: 'Token inválido' });
+    }
+    console.log('✅ Token válido. Usuario:', user);
     req.user = user;
     next();
   });
 };
 
-module.exports = verifyToken;
+module.exports = { verifyToken };

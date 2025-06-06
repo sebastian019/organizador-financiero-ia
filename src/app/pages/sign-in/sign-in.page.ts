@@ -32,14 +32,17 @@ export class SignInPage implements OnInit {
 
     const { email, password } = this.formulario.value;
 
-    this.authService.login(email, password).subscribe({
+    this.authService.login({ email, password }).subscribe({
       next: (res) => {
-        this.authService.saveToken(res.token);
-        this.router.navigate(['/menu-principal']); // Cambia a la ruta real de tu página principal
+        // 2. Ya no se necesita saveToken, la lógica está en el servicio.
+        console.log('Login exitoso', res);
+        // Redirige al menú principal después del login.
+        window.location.href = '/menu-principal';
       },
       error: (err) => {
-        alert('Credenciales incorrectas');
-        console.error(err);
+        // Manejo de errores
+        console.error('Error en el login', err);
+        alert(err.error.error || 'Credenciales inválidas');
       }
     });
   }

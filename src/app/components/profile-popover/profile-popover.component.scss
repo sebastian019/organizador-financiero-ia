@@ -1,0 +1,30 @@
+ion-list {
+  --ion-background-color: var(--ion-color-light);
+  padding: 0;
+}
+
+.profile-header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ion-color-step-150, #e0e0e0);
+  
+  ion-avatar {
+    width: 48px;
+    height: 48px;
+    margin-right: 16px;
+  }
+
+  h2 {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  p {
+    font-size: 0.9em;
+    color: var(--ion-color-step-600, #666);
+  }
+}
+
+ion-item {
+  --min-height: 48px;
+}

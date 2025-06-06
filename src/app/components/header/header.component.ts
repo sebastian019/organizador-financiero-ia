@@ -1,43 +1,64 @@
-// Ruta: src/app/components/header/header.component.ts
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; // Para la navegación del logo
+import { Component, OnInit, Input, OnDestroy, NgZone } from '@angular/core'; // 1. Importar NgZone
 import { CommonModule } from '@angular/common';
-import { IonicModule, MenuController } from '@ionic/angular'; // Importa MenuController
+import { IonicModule, PopoverController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { ProfilePopoverComponent } from '../profile-popover/profile-popover.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule]
+  imports: [CommonModule, IonicModule],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   @Input() pageTitle: string = 'GEPETE ECONOMICS';
-  @Input() showMenuButton: boolean = true; // Para controlar la visibilidad del botón de menú
+  
+  isUserLoggedIn: boolean = false;
+  userInitials: string | null = '';
 
-  // Placeholder: Reemplaza con tu lógica de autenticación real
-  public isUserLoggedIn: boolean = true; 
+  private authSubscription: Subscription | undefined;
 
   constructor(
-    private menuCtrl: MenuController, // Inyecta MenuController
-    private router: Router           // Inyecta Router para la navegación del logo
-    // private authService: AuthService // Si necesitas verificar el login
+    private router: Router,
+    public authService: AuthService,
+    private popoverCtrl: PopoverController,
+    private zone: NgZone // 2. Inyectar NgZone
   ) {}
 
   ngOnInit() {
-    // Aquí puedes poner lógica para determinar isUserLoggedIn
-    // Ejemplo: this.isUserLoggedIn = this.authService.isAuthenticated();
+    this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
+      // 3. Forzamos que la actualización se ejecute dentro de la "zona" de Angular
+      this.zone.run(() => {
+        this.isUserLoggedIn = isLoggedIn;
+        if (isLoggedIn) {
+          this.userInitials = this.authService.getUserInitials();
+        } else {
+          this.userInitials = '';
+        }
+      });
+    });
+  }
+
+  ngOnDestroy() {
+    if (this.authSubscription) {
+      this.authSubscription.unsubscribe();
+    }
   }
 
   navigateToHome() {
-    // Navega a la página principal o la que defina el logo
-    this.router.navigate(['/menu-principal']); // O la ruta que desees
+    this.router.navigate(['/menu-principal']);
   }
 
-  // ESTE ES EL MÉTODO QUE PARECE FALTAR O ESTAR MAL EN TU ARCHIVO ACTUAL
-  openSideMenu() {
-    // Abre el menú lateral que tendrá un menuId específico.
-    // Asegúrate de que este menuId coincida con el que definas en <ion-menu> en app.component.html.
-    this.menuCtrl.open('main-options-menu'); // Usamos 'main-options-menu' como ejemplo de menuId
+  async presentPopover(e: Event) {
+    const popover = await this.popoverCtrl.create({
+      component: ProfilePopoverComponent,
+      event: e,
+      translucent: true,
+      dismissOnSelect: false,
+    });
+    await popover.present();
   }
 }

@@ -1,53 +1,73 @@
 // Ruta: src/app/components/header/header.component.scss
 .main-header-component {
   ion-toolbar {
-    --color: #ffffff; 
-    position: relative; 
+    --color: #ffffff;
+    position: relative;
     padding: 0 8px;
   }
 
   .tralalero-logo {
-    margin-top: 0px; 
-    margin-left: 8px; 
-    width: 40px;  
-    height: 40px; 
+    margin-top: 0px;
+    margin-left: 8px;
+    width: 40px;
+    height: 40px;
     cursor: pointer;
-    display: block; 
+    display: block;
   }
 
-  .header-main-title { 
+  .header-main-title {
     text-align: center;
-    font-size: 1.2em; 
+    font-size: 1.2em;
     font-weight: bold;
-    color: var(--ion-toolbar-color, #fff); 
+    color: var(--ion-toolbar-color, #fff);
     position: absolute;
     left: 0;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    padding-left: 60px;  
-    padding-right: 60px; 
+    padding-left: 60px;
+    padding-right: 60px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-height: normal; 
+    line-height: normal;
   }
 
-  .menu-button { // Si renombraste la clase del botón
-    --color: var(--ion-toolbar-color, #fff); 
+  .profile-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: var(--ion-color-secondary);
+    color: var(--ion-color-secondary-contrast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    // Se añade margen a la derecha del avatar para separarlo del botón de menú
+    margin-right: 8px; 
+  }
+  
+  ion-menu-button {
+    // Se elimina el margen de aquí
+    --color: var(--ion-color-primary-contrast); 
+  }
+
+  ion-buttons[slot="end"] {
+    display: flex;
+    align-items: center;
   }
 }
 
 @media (min-width: 768px) {
   .main-header-component {
     .header-main-title {
-      font-size: 1.5em; 
-      padding-left: 100px;  
-      padding-right: 100px; 
+      font-size: 1.5em;
+      padding-left: 100px;
+      padding-right: 100px;
     }
 
     .tralalero-logo {
-      width: 50px;  
+      width: 50px;
       height: 50px;
       margin-left: 16px;
     }

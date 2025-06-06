@@ -1,14 +1,11 @@
-<!-- src/app/components/header/header.component.html -->
 <ion-header class="ion-no-border main-header-component">
   <ion-toolbar color="primary">
-    <!-- ... (logo y título se mantienen igual) ... -->
     <ion-buttons slot="start">
       <img 
         src="assets/tralalero.png" 
         alt="Logo" 
         class="tralalero-logo"
         (click)="navigateToHome()"
-        (keydown.enter)="navigateToHome()"
         tabindex="0"
         role="button"
         aria-label="Ir a la página de inicio"
@@ -17,16 +14,11 @@
     <ion-title class="header-main-title">{{ pageTitle }}</ion-title>
 
     <ion-buttons slot="end">
-      <!-- MODIFICACIÓN AQUÍ -->
-      <ng-container *ngIf="isUserLoggedIn && showMenuButton"> 
-        <ion-button 
-          fill="clear" 
-          (click)="openSideMenu()"
-          aria-label="Abrir menú de opciones"
-          class="menu-button">
-          <ion-icon slot="icon-only" name="ellipsis-vertical-outline" aria-hidden="true"></ion-icon>
-        </ion-button>
-      </ng-container>
+      <ion-avatar *ngIf="isUserLoggedIn" (click)="presentPopover($event)" class="profile-avatar">
+        <span>{{ userInitials }}</span>
+      </ion-avatar>
+
+      <ion-menu-button *ngIf="isUserLoggedIn"></ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

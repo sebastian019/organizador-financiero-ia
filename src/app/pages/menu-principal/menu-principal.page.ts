@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service'; // <-- Importa el servicio
 
 @Component({
   selector: 'app-menu-principal',
@@ -9,7 +10,14 @@ import { Router } from '@angular/router';
 })
 export class MenuPrincipalPage implements OnInit {
 
-  constructor(private router: Router) {}
+  public username: string | null = null; // <-- Añade esta propiedad
+
+  constructor(private router: Router, private authService: AuthService) { }
+
+  ngOnInit() {
+    // Llama al método del servicio para obtener el nombre de usuario
+    this.username = this.authService.getUsername();
+  }
 
   irAGastos() {
     this.router.navigate(['/gastos']);
@@ -29,9 +37,6 @@ export class MenuPrincipalPage implements OnInit {
 
   irAFamilia() {
     this.router.navigate(['/familia']);
-  }
-
-  ngOnInit() {
   }
 
 }

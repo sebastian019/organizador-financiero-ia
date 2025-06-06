@@ -10,6 +10,7 @@ import { MenuPrincipalPage } from './menu-principal.page';
 //import { BotonesInicio2Component } from '../../components/botones-inicio-2/botones-inicio-2.component';
 import { HeaderComponent } from '../../components/header/header.component'
 
+
 @NgModule({
   imports: [
     CommonModule,

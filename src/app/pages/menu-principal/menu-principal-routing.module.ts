@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { MenuPrincipalPage } from './menu-principal.page';
 
 const routes: Routes = [

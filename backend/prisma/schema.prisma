@@ -8,12 +8,24 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  email    String @unique
-  password String
-  rut      String?
-  region   String?
-  comuna   String?
-  role     String  @default("user")
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  rut       String?
+  region    String?
+  comuna    String?
+  role      String?  @default("user")
+  gastos    Gasto[]
+}
+
+model Gasto {
+  id          Int      @id @default(autoincrement())
+  descripcion String
+  fecha       DateTime
+  abono       Float?
+  gasto       Float?
+  saldo       Float?
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int
 }

@@ -23,3 +23,6 @@ app.get('/', (req, res) => {
 });
 
 module.exports = app;
+
+const gastosRoutes = require('./routes/gastos.routes');
+app.use('/api/gastos', gastosRoutes);

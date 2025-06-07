@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -67,6 +67,31 @@ export class AuthService {
     this.loggedIn.next(false);
     this.router.navigate(['/home']);
   }
+
+  deleteProfile(): Observable<any> {
+    const token = this.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      })
+    };
+
+    // La URL debe coincidir con la que definiremos en el backend
+  return this.http.delete(`${this.apiUrl}/profile`, httpOptions).pipe(
+      tap(() => {
+        // Si el borrado es exitoso, cerramos la sesión del frontend
+        this.logout();
+      })
+    );
+  }
+
+
+
+  
+
+
+
 
   getToken(): string | null {
     return localStorage.getItem('token');

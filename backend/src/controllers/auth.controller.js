@@ -63,6 +63,31 @@ const login = async (req, res) => {
   }
 };
 
+// **** AÑADIR ESTA NUEVA FUNCIÓN COMPLETA ****
+const deleteProfile = async (req, res) => {
+  // El userId lo obtenemos del token que ya fue verificado
+  const userId = req.user.userId;
+
+  try {
+    // Gracias a la migración que hicimos, al borrar el usuario,
+    // Prisma borrará también todos sus gastos asociados en cascada.
+    await prisma.user.delete({
+      where: {
+        id: userId,
+      },
+    });
+
+    res.status(200).json({ message: 'Usuario eliminado correctamente' });
+  } catch (error) {
+    console.error(error);
+    // Este error ('P2025') ocurre si el registro a borrar no existe.
+    if (error.code === 'P2025') {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+    res.status(500).json({ error: 'Error en el servidor al eliminar el perfil' });
+  }
+};
 
 
-module.exports = { register, login };
+
+module.exports = { register, login, deleteProfile };

@@ -52,4 +52,32 @@ const procesarCartola = async (req, res) => {
   }
 };
 
-module.exports = { procesarCartola };
+const obtenerTotalesPorDescripcion = async (req, res) => {
+  const userId = req.user.userId;
+
+  try {
+    // Trae todos los gastos del usuario y agrupa por descripción
+    const gastos = await prisma.gasto.groupBy({
+      by: ['descripcion'],
+      where: { userId: userId },
+      _sum: {
+        abono: true,
+        gasto: true,
+      },
+    });
+
+    // Formatea la respuesta
+    const resultados = gastos.map(g => ({
+      descripcion: g.descripcion,
+      totalAbonos: g._sum.abono || 0,
+      totalGastos: g._sum.gasto || 0,
+    }));
+
+    res.json(resultados);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al consultar los gastos.' });
+  }
+};
+
+module.exports = { procesarCartola, obtenerTotalesPorDescripcion };

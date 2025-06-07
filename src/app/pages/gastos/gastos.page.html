@@ -1,20 +1,19 @@
-<app-header></app-header>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cargar Cartola Bancaria</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content class="ion-padding">
-  <div class="upload-container">
-    <h2>Antes de continuar, ingresa tu cartola de gastos en formato PDF</h2>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label>Archivo Cartola (.xlsx)</ion-label>
+      <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" required>
+    </ion-item>
+    <ion-button expand="block" type="submit" [disabled]="!selectedFile">Subir Cartola</ion-button>
+  </form>
 
-    <div class="upload-box">
-      <ion-icon name="arrow-up-outline" class="upload-icon"></ion-icon>
-      <p>Arrastra o sube un archivo</p>
-    </div>
-
-    <div class="consulta-gpt-container">
-      <ion-button expand="block" class="consulta-gpt-button" (click)="irAListaGastos()">Cargar Documento</ion-button>
-    </div>
-
-    <div class="atras">
-      <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRAS</ion-button>
-    </div>
-  </div>
+  <ion-text *ngIf="mensaje" color="primary">
+    <p>{{ mensaje }}</p>
+  </ion-text>
 </ion-content>

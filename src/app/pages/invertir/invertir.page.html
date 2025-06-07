@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<ion-content class="ion-padding">
+
+  <div class="container-compra">
+
+    <h2>Comprar Acción</h2>
+
+    <div *ngIf="accion">
+      <h3>{{ accion.nombre }}</h3>
+      <p>Precio: ${{ accion.precio.toFixed(2) }}</p>
+      <p [style.color]="accion.cambio > 0 ? 'green' : accion.cambio < 0 ? 'red' : 'gray'">
+        {{ accion.cambio >= 0 ? '+' : '' }}{{ accion.cambio.toFixed(2) }}%
+      </p>
+
+      <div class="selector-cantidad">
+        <ion-button size="small" (click)="disminuir()" [disabled]="cantidad <= 1">-</ion-button>
+        <ion-input type="number" [(ngModel)]="cantidad" min="1" style="width: 50px; text-align: center;"></ion-input>
+        <ion-button size="small" (click)="aumentar()">+</ion-button>
+      </div>
+
+      <ion-button expand="block" (click)="comprar()">Comprar</ion-button>
+      <ion-button expand="block" fill="outline" (click)="volver()">Cancelar</ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

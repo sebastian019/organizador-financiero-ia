@@ -23,7 +23,6 @@ export class AppComponent {
   public appPages = [
     { title: 'Inicio', url: '/menu-principal', icon: 'home' },
     { title: 'Opciones', url: '/opciones', icon: 'settings' }
-    // ... (tus otras páginas del menú)
   ];
 
   constructor(

@@ -129,4 +129,12 @@ export class InversionesPage implements OnInit {
   irAMenuPrincipal() {
     this.router.navigate(['/menu-principal']);
   }
+  
+  irInvertir() {
+  const accionSeleccionada = this.acciones[this.activoIndex];
+  this.router.navigate(['/invertir'], {
+    state: { accionSeleccionada }
+  });
+}
+
 }

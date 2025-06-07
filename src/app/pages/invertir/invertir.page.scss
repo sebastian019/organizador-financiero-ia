@@ -1,0 +1,21 @@
+.container-compra {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.selector-cantidad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+
+  ion-button {
+    --padding-start: 8px;
+    --padding-end: 8px;
+  }
+
+  ion-input {
+    margin: 0 10px;
+  }
+}

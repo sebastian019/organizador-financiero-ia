@@ -30,7 +30,8 @@ const routes: Routes = [
   {
     path: 'consulta-gpt',
     loadChildren: () => import('./pages/consulta-gpt/consulta-gpt.module').then( m => m.ConsultaGptPageModule)
-  },  {
+  },
+  {
     path: 'gastos',
     loadChildren: () => import('./pages/gastos/gastos.module').then( m => m.GastosPageModule)
   },
@@ -45,7 +46,12 @@ const routes: Routes = [
   {
     path: 'familia',
     loadChildren: () => import('./pages/familia/familia.module').then( m => m.FamiliaPageModule)
+  },
+  {
+    path: 'invertir',
+    loadChildren: () => import('./pages/invertir/invertir.module').then( m => m.InvertirPageModule)
   }
+
 
 
   /*{

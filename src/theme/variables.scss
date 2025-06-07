@@ -1,2 +1,31 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* src/theme/variables.scss */
+
+// Define las variables de color globales para la aplicación.
+// Usaremos estas variables para aplicar los temas.
+:root {
+  --ion-background-color: #ffffff;
+  --ion-toolbar-background: #0d6efd; // Azul por defecto para el header
+  --ion-toolbar-color: #ffffff;      // Color del texto en el header
+
+
+  --chat-footer-background: #ffffff;
+  --chat-input-background: #f4f5f8;
+  --chat-input-color: #000000;
+
+  // Paleta de colores base de Ionic
+  --ion-color-primary: #0d6efd;
+  --ion-color-primary-rgb: 13, 110, 253;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #0b60dc;
+  --ion-color-primary-tint: #2579fa;
+
+  // ... (otros colores de Ionic si los necesitas)
+}
+
+// Opcional: Para el modo oscuro, si quieres implementarlo más adelante
+body.dark {
+  --ion-background-color: #121212;
+  --ion-toolbar-background: #1f1f1f;
+  --ion-toolbar-color: #ffffff;
+}

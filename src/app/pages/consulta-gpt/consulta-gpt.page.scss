@@ -1,9 +1,5 @@
 // src/app/pages/consulta-gpt/consulta-gpt.page.scss
 
-ion-content {
-  // Variable para el fondo del chat
-  --background: #f4f5f8;
-}
 
 .chat-container {
   display: flex;
@@ -40,11 +36,13 @@ ion-content {
 
 ion-footer {
   ion-toolbar {
-    --background: #ffffff;
+    /* **** LÍNEA MODIFICADA **** */
+    --background: var(--ion-toolbar-background); // Usará el mismo color que el header
     padding: 5px 0;
   }
   ion-item {
-    --background: #f4f5f8;
+    --background: var(--chat-input-background);
+    --color: var(--chat-input-color);
     --border-radius: 25px;
     --padding-start: 10px;
     margin: 0 10px;

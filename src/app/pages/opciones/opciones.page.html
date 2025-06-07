@@ -1,9 +1,30 @@
-<app-header></app-header>
+<app-header title="Personalizar Tema"></app-header>
 
 <ion-content class="ion-padding">
-  <div class="opciones-container">
-    <ion-button expand="block" class="option-button">CERRAR SESIÓN</ion-button>
-    <ion-button expand="block" class="option-button">BORRAR CUENTA</ion-button>
-    <ion-button expand="block" class="option-button" (click)="irAMenuPrincipal()">SALIR</ion-button>
-  </div>
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectedBackground">
+      <ion-list-header>
+        <ion-label>Color de Fondo</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let color of backgroundColors" (click)="changeBackgroundColor(color.value)">
+        <ion-label>{{ color.name }}</ion-label>
+        <ion-radio slot="end" [value]="color.value"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectedHeader">
+      <ion-list-header>
+        <ion-label>Color del Encabezado</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let color of headerColors" (click)="changeHeaderColor(color.value)">
+        <ion-label>{{ color.name }}</ion-label>
+        <ion-radio slot="end" [value]="color.value"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
 </ion-content>

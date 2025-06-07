@@ -22,6 +22,7 @@ import { CommonModule } from '@angular/common'; // Importa CommonModule si usas 
 export class AppComponent {
   public appPages = [
     { title: 'Inicio', url: '/menu-principal', icon: 'home' },
+    { title: 'Opciones', url: '/opciones', icon: 'settings' }
     // ... (tus otras páginas del menú)
   ];
 
@@ -31,6 +32,29 @@ export class AppComponent {
     private menuCtrl: MenuController
   ) {
     this.initializeApp();
+    this.loadTheme(); 
+  }
+
+  loadTheme() {
+    const backgroundColor = localStorage.getItem('theme-background');
+    const headerColor = localStorage.getItem('theme-header');
+    
+    // **** AÑADIR ESTA LÍNEA ****
+    const themeMode = localStorage.getItem('theme-mode');
+
+    if (backgroundColor) {
+      document.documentElement.style.setProperty('--ion-background-color', backgroundColor);
+    }
+    if (headerColor) {
+      document.documentElement.style.setProperty('--ion-color-primary', headerColor);
+    }
+
+    // **** AÑADIR ESTA LÓGICA ****
+    if (themeMode === 'dark') {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
   }
 
   initializeApp() {

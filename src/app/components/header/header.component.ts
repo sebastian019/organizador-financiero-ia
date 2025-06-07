@@ -48,9 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  navigateToHome() {
-    this.router.navigate(['/menu-principal']);
-  }
+
 
   async presentPopover(e: Event) {
     const popover = await this.popoverCtrl.create({

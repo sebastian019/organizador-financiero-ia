@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ChartConfiguration, ChartType, ChartOptions} from 'chart.js';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { InversionesService } from 'src/app/services/inversiones.service';
 import { ModalController } from '@ionic/angular';
 import { ModalGraficoComponent } from 'src/app/modal-grafico/modal-grafico.component';
@@ -26,6 +26,7 @@ export class InversionesPage implements OnInit {
     { nombre: 'Adobe (ADBE)', symbol: 'ADBE', cambio: 0, precio: 0 },
   ];
 
+  activoIndex = 0;
 
   public lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: [],
@@ -41,8 +42,6 @@ export class InversionesPage implements OnInit {
     ]
   };
 
-  public lineChartType: 'line' = 'line';
-
   public lineChartOptions: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
@@ -52,76 +51,71 @@ export class InversionesPage implements OnInit {
       },
     },
   };
-  activoIndex = 0;
 
-  constructor(private router: Router, private inversionesService: InversionesService, private modalCtrl: ModalController) { }
+  public lineChartType: 'line' = 'line';
 
-    intervalId: any;
+  constructor(
+    private router: Router,
+    private inversionesService: InversionesService,
+    private modalCtrl: ModalController
+  ) { }
 
-    ngOnInit() {
-      this.cargarDatosTodasLasAcciones();  // Solo maneja acciones
-      this.cargarDatosParaGrafico();       // Solo maneja gráfico
+  ngOnInit() {
+    this.cargarDatosAccionActual();
 
-      this.intervalId = setInterval(() => {
-      this.cargarDatosTodasLasAcciones();
-      }, 2 * 60 * 1000); // cada 2 minutos
-    }
-
-    async abrirModal(accion: any) {
-      const modal = await this.modalCtrl.create({
-        component: ModalGraficoComponent,
-        componentProps: { accion }
-     });
-      await modal.present();
-    }
-  cargarDatosTodasLasAcciones() {
-    this.acciones.forEach((accion, index) => {
-      this.inversionesService.obtenerDatosAccion(accion.symbol).subscribe(response => {
-        const valores = response.values || [];
-          if (valores.length >= 2) {
-          const ultimo = Number(valores[0].close);
-          const anterior = Number(valores[1].close);
-          const cambio = ((ultimo - anterior) / anterior) * 100;
-          this.acciones[index].precio = Number(ultimo.toFixed(2));
-          this.acciones[index].cambio = Number(cambio.toFixed(2));
-        }
-      }, error => {
-        console.error(`Error cargando datos de ${accion.symbol}:`, error);
-      });
-    });
+    // Opcional: refrescar cada 2 minutos solo la acción actual
+    setInterval(() => {
+      this.cargarDatosAccionActual();
+    }, 2 * 60 * 1000);
   }
 
-  cargarDatosParaGrafico() {
+  cargarDatosAccionActual() {
     const accion = this.acciones[this.activoIndex];
     this.inversionesService.obtenerDatosAccion(accion.symbol).subscribe(response => {
       const valores = response.values || [];
+      if (valores.length >= 2) {
+        // Actualizamos precio y cambio
+        const ultimo = Number(valores[0].close);
+        const anterior = Number(valores[1].close);
+        const cambio = ((ultimo - anterior) / anterior) * 100;
+
+        this.acciones[this.activoIndex].precio = Number(ultimo.toFixed(2));
+        this.acciones[this.activoIndex].cambio = Number(cambio.toFixed(2));
+      } else {
+        this.acciones[this.activoIndex].precio = 0;
+        this.acciones[this.activoIndex].cambio = 0;
+      }
+
+      // Actualizamos datos para el gráfico
       this.lineChartData.labels = valores.map((v: any) => v.datetime).reverse();
       this.lineChartData.datasets[0].data = valores.map((v: any) => Number(v.close)).reverse();
       this.lineChartData.datasets[0].label = accion.nombre;
     }, error => {
-      console.error('Error cargando datos para el gráfico:', error);
+      console.error(`Error cargando datos de ${accion.symbol}:`, error);
+      this.acciones[this.activoIndex].precio = 0;
+      this.acciones[this.activoIndex].cambio = 0;
+      this.lineChartData.labels = [];
+      this.lineChartData.datasets[0].data = [];
+      this.lineChartData.datasets[0].label = '';
     });
   }
 
-
-  actualizarCambio(valores: any[]) {
-  if (valores.length < 2) return;
-  const ultimo = Number(valores[0].close);
-  const anterior = Number(valores[1].close);
-  const cambio = ((ultimo - anterior) / anterior) * 100;
-  this.acciones[this.activoIndex].cambio = Number(cambio.toFixed(2));
-  this.acciones[this.activoIndex].precio = Number(ultimo.toFixed(2));
-}
-
-
   siguienteAccion() {
     this.activoIndex = (this.activoIndex + 1) % this.acciones.length;
-    this.cargarDatosParaGrafico();
+    this.cargarDatosAccionActual();
   }
 
   anteriorAccion() {
     this.activoIndex = (this.activoIndex - 1 + this.acciones.length) % this.acciones.length;
-    this.cargarDatosParaGrafico();
+    this.cargarDatosAccionActual();
+  }
+
+  async abrirModal(accion: any) {
+    const modal = await this.modalCtrl.create({
+      component: ModalGraficoComponent,
+      componentProps: { accion }
+    });
+    await modal.present();
   }
 
   irAOpciones() {

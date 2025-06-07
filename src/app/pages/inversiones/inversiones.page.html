@@ -1,34 +1,46 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-  <div class="inversiones-container">
-    <!-- Lista de acciones -->
-    <div class="acciones-lista">
-      <h3 class="titulo-acciones">ACCIONES DEL MERCADO</h3>
-      <ion-list>
-        <ion-item *ngFor="let accion of acciones" (click)="abrirModal(accion)">
-          <ion-label>
-            {{ accion.nombre }}
-            <p *ngIf="accion.precio !== null && accion.cambio !== null">
-              ${{ accion.precio.toFixed(2) }} |
-              <span [style.color]="accion.cambio > 0 ? 'green' : accion.cambio < 0 ? 'red' : 'gray'">
-                {{ accion.cambio >= 0 ? '+' : '' }}{{ accion.cambio.toFixed(2) }}%
-              </span>
-            </p>
-            <p *ngIf="accion.precio === null || accion.cambio === null">Cargando datos...</p>
-          </ion-label>
-        </ion-item>
-      </ion-list>
+  <div class="container-acciones">
+    <h2 class="titulo-principal">ACCIONES DE MERCADO</h2>
+
+    <!-- Información de la acción actual -->
+    <div class="info-accion">
+      <h3>{{ acciones[activoIndex]?.nombre || 'Cargando...' }}</h3>
+      <p>
+        Precio: ${{ acciones[activoIndex]?.precio !== undefined ? acciones[activoIndex].precio.toFixed(2) : '...' }} |
+        <span [style.color]="
+          (acciones[activoIndex]?.cambio ?? 0) > 0 ? 'green' :
+          (acciones[activoIndex]?.cambio ?? 0) < 0 ? 'red' : 'gray'">
+          {{ (acciones[activoIndex]?.cambio ?? 0) >= 0 ? '+' : '' }}
+          {{ acciones[activoIndex]?.cambio !== undefined ? acciones[activoIndex].cambio.toFixed(2) : '...' }}%
+        </span>
+      </p>
+    </div>
+
+    <!-- Gráfico -->
+    <div class="grafico-accion">
+      <canvas baseChart
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType">
+      </canvas>
+    </div>
+
+    <!-- Botones navegación (Anterior - Invertir - Siguiente) -->
+    <div class="botones-navegacion" style="display: flex; justify-content: space-between; margin-top: 20px;">
+      <ion-button (click)="anteriorAccion()" [disabled]="activoIndex === 0">Anterior</ion-button>
+      <ion-button>Invertir</ion-button>
+      <ion-button (click)="siguienteAccion()" [disabled]="activoIndex === acciones.length - 1">Siguiente</ion-button>
     </div>
   </div>
 
-  <!-- Consulta GPT -->
-  <div class="consulta-gpt-container">
-    <ion-button expand="block" class="consulta-gpt-button" (click)="irConsultaGpt()">CONSULTA GPT</ion-button>
+  
+  <div style="position: fixed; bottom: 10px; left: 10px;">
+    <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRÁS</ion-button>
   </div>
 
-  <!-- Botón Atrás -->
-  <div class="atras">
-    <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRÁS</ion-button>
+  <div style="position: fixed; bottom: 10px; right: 10px;">
+    <ion-button expand="block" class="consulta-gpt-button" (click)="irConsultaGpt()">CONSULTA GPT</ion-button>
   </div>
 </ion-content>

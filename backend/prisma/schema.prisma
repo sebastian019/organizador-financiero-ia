@@ -8,7 +8,7 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
+  id_usuario       Int      @id @default(autoincrement())
   username  String   @unique
   email     String   @unique
   password  String
@@ -17,15 +17,24 @@ model User {
   comuna    String?
   role      String?  @default("user")
   gastos    Gasto[]
+  familia   Familia    @relation(fields: [id_familia], references: [id_familia])
+  id_familia     Int
 }
 
 model Gasto {
-  id          Int      @id @default(autoincrement())
+  id_gasto        Int      @id @default(autoincrement())
   descripcion String
   fecha       DateTime
   abono       Float?
   gasto       Float?
   saldo       Float?
-  user        User     @relation(fields: [userId], references: [id])
-  userId      Int
+  user        User     @relation(fields: [id_usuario], references: [id_usuario])
+  id_usuario      Int
+}
+
+model Familia {
+  id_familia       Int      @id @default(autoincrement())
+  nombre  String   @unique
+  usuarios     User[]
+  ingresos     Int
 }

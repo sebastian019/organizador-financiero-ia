@@ -11,11 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FamiliaPage implements OnInit {
   formulario!: FormGroup;
-  miembros = [
-    { nombre: 'Juan', edad: 30 },
-    { nombre: 'María', edad: 25 },
-    { nombre: 'Pedro', edad: 35 }
-  ];
+  miembros: any[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +24,7 @@ export class FamiliaPage implements OnInit {
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
+    this.obtenerMiembros();
   }
 
   irAMenuPrincipal(){
@@ -58,7 +55,7 @@ export class FamiliaPage implements OnInit {
     });
   }
 
-  editarMiembro(){
+  editarMiembro(miembro: any){
     const formData = this.formulario.value;
     fetch(`http://localhost:3000/api/familia/editar/${formData.id}`, {
       method: 'PUT',
@@ -82,9 +79,8 @@ export class FamiliaPage implements OnInit {
     });
   }
 
-  borrarMiembro(){
-    const formData = this.formulario.value;
-    fetch(`http://localhost:3000/api/familia/eliminar/${formData.id}`, {
+  borrarMiembro(miembro: any) {
+    fetch(`http://localhost:3000/api/familia/eliminar/${miembro.id_usuario}`, {
       method: 'DELETE'
     })
     .then(async (res) => {
@@ -92,13 +88,26 @@ export class FamiliaPage implements OnInit {
         const errorData = await res.json();
         throw new Error(errorData.error || 'Error desconocido');
       }
-      // Registro exitoso, redirige al login
-      this.router.navigate(['/sign-in']);
+      // Opcional: actualizar la lista sin recargar
+      this.miembros = this.miembros.filter(m => m.id_usuario !== miembro.id_usuario);
+      alert('Familiar eliminado exitosamente');
     })
     .catch((error) => {
-      console.error('Error al registrar usuario:', error.message);
-      alert('Error al registrar usuario: ' + error.message);
+      console.error('Error al eliminar usuario:', error.message);
+      alert('Error al eliminar usuario: ' + error.message);
     });
+  }
+
+  obtenerMiembros() {
+    fetch(`http://localhost:3000/api/familia/listar`)
+      .then(res => res.json())
+      .then(data => {
+        this.miembros = data;
+      })
+      .catch(error => {
+        console.error('Error al obtener miembros:', error);
+        alert('Error al obtener miembros');
+      });
   }
 
   irAMiembro(){};

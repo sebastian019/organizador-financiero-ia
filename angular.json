@@ -96,6 +96,7 @@
           "options": {
             "main": "src/test.ts",
             "polyfills": "src/polyfills.ts",
+            "proxyConfig": "proxy.conf.json",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",

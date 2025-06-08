@@ -53,7 +53,7 @@ const editar = async (req, res) => {
 
 const eliminar = async (req, res) => {
   // El userId lo obtenemos del token que ya fue verificado
-  const userId = req.params.userId;
+  const userId = req.params.id_usuario;
 
   try {
     // Gracias a la migración que hicimos, al borrar el usuario,
@@ -74,3 +74,20 @@ const eliminar = async (req, res) => {
     res.status(500).json({ error: 'Error en el servidor al eliminar el perfil' });
   }
 };
+
+const listar = async (req, res) => {
+  try {
+    const miembros = await prisma.user.findMany({
+      include: {
+        familia: true, // opcional, elimina si no necesitas info de la familia
+      },
+    });
+    console.log(miembros);
+    res.json(miembros);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener los miembros' });
+  }
+};
+
+module.exports = { agregar, eliminar, editar, listar };

@@ -13,20 +13,22 @@
 
     <div class="lista">
       <ion-list class="list" lines="none" fill="none">
-        <ion-item *ngFor="let miembro of miembros" (click)="irAMiembro()">
-          <ion-label>{{ miembro.nombre }}</ion-label>
-          <ion-button slot="end" fill="clear" (click)="editarMiembro()">
+        <ion-item *ngFor="let miembro of miembros">
+          <ion-label>{{ miembro.username }}</ion-label>
+          <ion-button slot="end" fill="clear" (click)="editarMiembro(miembro)">
             <ion-icon name="open-outline"></ion-icon>
           </ion-button>
-          <ion-button slot="end" fill="clear" (click)="borrarMiembro()">
+          <ion-button slot="end" fill="clear" (click)="borrarMiembro(miembro)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-item>
       </ion-list>
+
       <ion-fab-button shape="circle" class="add-button" (click)="agregarMiembro()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </div>
+
 
     <div class="atras">
       <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRAS</ion-button>

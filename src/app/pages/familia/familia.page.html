@@ -15,19 +15,31 @@
       <ion-list class="list" lines="none" fill="none">
         <ion-item *ngFor="let miembro of miembros">
           <ion-label>{{ miembro.username }}</ion-label>
+          
           <ion-button slot="end" fill="clear" (click)="editarMiembro(miembro)">
             <ion-icon name="open-outline"></ion-icon>
           </ion-button>
+          
           <ion-button slot="end" fill="clear" (click)="borrarMiembro(miembro)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>
         </ion-item>
       </ion-list>
-
-      <ion-fab-button shape="circle" class="add-button" (click)="agregarMiembro()">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
     </div>
+      
+    <ion-fab-button shape="circle" class="add-button" (click)="mostrarForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+
+    <form [formGroup]="formulario" *ngIf="mostrarFormulario">
+      <ion-item>
+        <ion-label position="floating">Nombre de usuario</ion-label>
+        <ion-input type="text" formControlName="username" autocomplete="off"></ion-input>
+      </ion-item>
+
+      <ion-button (click)="agregarMiembro()" [disabled]="formulario.invalid">Guardar</ion-button>
+      <ion-button (click)="ocultarForm()">Cancelar</ion-button>
+    </form>
 
 
     <div class="atras">

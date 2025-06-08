@@ -4,44 +4,76 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 const agregar = async (req, res) => {
-    const { username, email} = req.body;
+  const { username } = req.body;
 
-    try {
-        const existingUser = await prisma.user.findFirst({
-            where: {
-                OR: [{ username }, { email }],
-            },
-        });
+  try {
+    console.log('req.user:', req.user);
+    const usuarioLogeado = await prisma.user.findUnique({
+      where: { username: req.user.username }, // Requiere que uses autenticación y hayas seteado req.user
+    });
 
-        if (existingUser) {
-            return res.status(400).json({ error: 'Nombre o correo ya registrado' });
-        }
-
-        const user = await prisma.user.create({
+    if (!usuarioLogeado?.id_familia) {
+        // Crea una nueva familia
+        const nuevaFamilia = await prisma.familia.create({
             data: {
-                username,
-                email
+            nombre: `${usuarioLogeado.username}-familia`, // o algo más elaborado
+            ingresos: 0
             },
+        })
+
+        await prisma.user.update({
+            where: {
+                id_usuario: usuarioLogeado.id_usuario,  // ¡Usa id_usuario, no id!
+            },
+            data: {
+                id_familia: nuevaFamilia.id_familia,   // Aquí actualizas el campo correcto
+            }
         });
-        res.status(201).json({ message: 'Familiar creado exitosamente' });
-    }   catch (error) {
-    console.error(error);
+    }
+
+    const usuarioAAgregar = await prisma.user.findUnique({
+      where: { username },
+    });
+
+    if (!usuarioAAgregar) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    if (
+        usuarioAAgregar.id_familia !== null &&
+        usuarioLogeado.id_familia !== null &&
+        usuarioAAgregar.id_familia === usuarioLogeado.id_familia
+        ) {
+        return res.status(400).json({ error: 'Este usuario ya es parte de tu familia' });
+    }
+
+    await prisma.user.update({
+      where: { id_usuario: usuarioAAgregar.id_usuario },
+      data: {
+        id_familia: usuarioLogeado.id_familia,
+      },
+    });
+
+    res.status(200).json({ message: 'Usuario agregado a tu familia' });
+  } catch (error) {
+    
+    console.error('Error al agregar familiar:', error);
     res.status(500).json({ error: 'Error en el servidor' });
   }
 };
 
+
 const editar = async (req, res) => {
-    const { username, email} = req.body;
-    const { id } = req.params;
+    const { apodo } = req.body;
+    const { id_usuario } = req.params;
 
     try {
         const user = await prisma.user.update({
             where: {
-                id_usuario: parseInt(id), // usa el nombre correcto de tu PK
+                id_usuario: parseInt(id_usuario), // usa el nombre correcto de tu PK
             },
             data: {
-                username,
-                email
+                apodo
             },
         });
         res.status(201).json({ message: 'Familiar actualizado exitosamente' });
@@ -52,41 +84,52 @@ const editar = async (req, res) => {
 };
 
 const eliminar = async (req, res) => {
-  // El userId lo obtenemos del token que ya fue verificado
-  const userId = req.params.id_usuario;
+    const id_usuario = parseInt(req.params.id_usuario);
 
   try {
-    // Gracias a la migración que hicimos, al borrar el usuario,
-    // Prisma borrará también todos sus gastos asociados en cascada.
-    await prisma.user.delete({
-        where: {
-            id_usuario: parseInt(userId),
-        },
+    const usuarioActualizado = await prisma.user.update({
+      where: { id_usuario: id_usuario },
+      data: {
+        id_familia: null
+      }
     });
 
-    res.status(200).json({ message: 'Familiar eliminado correctamente' });
+    res.status(200).json({ message: 'Usuario removido de la familia correctamente' });
   } catch (error) {
-    console.error(error);
-    // Este error ('P2025') ocurre si el registro a borrar no existe.
+    console.error('Error al remover usuario de la familia:', error);
     if (error.code === 'P2025') {
-      return res.status(404).json({ error: 'Familiar no encontrado' });
+      return res.status(404).json({ error: 'Usuario no encontrado' });
     }
-    res.status(500).json({ error: 'Error en el servidor al eliminar el perfil' });
+    res.status(500).json({ error: 'Error en el servidor' });
   }
 };
 
+
 const listar = async (req, res) => {
-  try {
-    const miembros = await prisma.user.findMany({
-      include: {
-        familia: true, // opcional, elimina si no necesitas info de la familia
-      },
+    console.log('Entrando en listar');
+    console.log('req.user:', req.user);
+
+    try {
+        const usuarioLogeado = await prisma.user.findUnique({
+        where: { username: req.user.username },
     });
-    console.log(miembros);
+
+    if (!usuarioLogeado?.id_familia) {
+      return res.status(400).json({ error: 'Usuario sin familia asignada' });
+    }
+
+    const miembros = await prisma.user.findMany({
+      where: { id_familia: usuarioLogeado.id_familia },
+      select: {
+        id_usuario: true,
+        username: true
+      }
+    });
+    console.log("Miembros a enviar:", miembros);
     res.json(miembros);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error al obtener los miembros' });
+    console.error('Error al listar miembros:', error);
+    res.status(500).json({ error: 'Error en el servidor' });
   }
 };
 

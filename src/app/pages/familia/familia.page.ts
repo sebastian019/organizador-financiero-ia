@@ -12,6 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class FamiliaPage implements OnInit {
   formulario!: FormGroup;
   miembros: any[] = [];
+  mostrarFormulario = false;
 
   constructor(
     private fb: FormBuilder,
@@ -22,23 +23,23 @@ export class FamiliaPage implements OnInit {
   ngOnInit() {
     this.formulario = this.fb.group({
       username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
     });
     this.obtenerMiembros();
   }
 
   irAMenuPrincipal(){
+    this.ocultarForm();
     this.router.navigate(['/menu-principal']);
   }
 
   agregarMiembro(){
     const formData = this.formulario.value;
+    const token = localStorage.getItem('token');
     fetch('http://localhost:3000/api/familia/agregar', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
       body: JSON.stringify({
         username: formData.username,
-        email: formData.email
       }),
     })
     .then(async (res) => {
@@ -46,23 +47,21 @@ export class FamiliaPage implements OnInit {
         const errorData = await res.json();
         throw new Error(errorData.error || 'Error desconocido');
       }
-          // Registro exitoso, redirige al login
-      this.router.navigate(['/sign-in']);
     })
     .catch((error) => {
       console.error('Error al registrar usuario:', error.message);
       alert('Error al registrar usuario: ' + error.message);
     });
+    this.ocultarForm();
   }
 
   editarMiembro(miembro: any){
     const formData = this.formulario.value;
-    fetch(`http://localhost:3000/api/familia/editar/${formData.id}`, {
+    fetch(`http://localhost:3000/api/familia/editar/${miembro.id_usuario}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {     'Content-Type': 'application/json' },
       body: JSON.stringify({
-        username: formData.username,
-        email: formData.email
+        apodo: formData.apodo,
       }),
     })
     .then(async (res) => {
@@ -70,18 +69,21 @@ export class FamiliaPage implements OnInit {
         const errorData = await res.json();
         throw new Error(errorData.error || 'Error desconocido');
       }
-          // Registro exitoso, redirige al login
-      this.router.navigate(['/sign-in']);
     })
     .catch((error) => {
       console.error('Error al actualizar usuario:', error.message);
       alert('Error al actualizar usuario: ' + error.message);
     });
+    this.ocultarForm();
   }
 
   borrarMiembro(miembro: any) {
+    const token = localStorage.getItem('token');
     fetch(`http://localhost:3000/api/familia/eliminar/${miembro.id_usuario}`, {
-      method: 'DELETE'
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
     .then(async (res) => {
       if (!res.ok) {
@@ -96,18 +98,34 @@ export class FamiliaPage implements OnInit {
       console.error('Error al eliminar usuario:', error.message);
       alert('Error al eliminar usuario: ' + error.message);
     });
+    this.ocultarForm();
   }
 
   obtenerMiembros() {
-    fetch(`http://localhost:3000/api/familia/listar`)
+    const token = localStorage.getItem('token');
+    console.log('Token enviado:', token);
+    fetch(`http://localhost:3000/api/familia/listar`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
       .then(res => res.json())
       .then(data => {
+        console.log('Data recibida:', data);
         this.miembros = data;
       })
       .catch(error => {
         console.error('Error al obtener miembros:', error);
         alert('Error al obtener miembros');
       });
+  }
+
+  mostrarForm() {
+    this.mostrarFormulario = !this.mostrarFormulario;
+  }
+
+  ocultarForm() {
+    this.mostrarFormulario = false;
   }
 
   irAMiembro(){};

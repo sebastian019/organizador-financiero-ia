@@ -1,0 +1,171 @@
+type: collection.insomnia.rest/5.0
+name: My first collection
+meta:
+  id: wrk_0df11ea913c940c4969e4b87746a1338
+  created: 1749001818886
+  modified: 1749001818886
+collection:
+  - url: http://localhost:3000/api/auth/register
+    name: Registro de Usuario
+    meta:
+      id: req_1d2cc4c095a44663921aae52bb797e35
+      created: 1749001818946
+      modified: 1749266572732
+      isPrivate: false
+      sortKey: -1749001818946
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "username": "juan123",
+          "email": "juan@example.com",
+          "password": "claveSegura123",
+          "rut": "12345678-9",
+          "region": "Metropolitana",
+          "comuna": "Santiago"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/api/auth/login
+    name: Login Usuario
+    meta:
+      id: req_1e063d717ae34a1f8483fb9e281aba19
+      created: 1749079150711
+      modified: 1749266628943
+      isPrivate: false
+      sortKey: -1749079150711
+    method: POST
+    body:
+      mimeType: application/json
+      text: |
+        {
+          "email": "juan@example.com",
+          "password": "claveSegura123"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/api/auth/profile
+    name: Perfil Usuario
+    meta:
+      id: req_5f9e6f7a389240d58129e16f5436aafd
+      created: 1749079404611
+      modified: 1749079592639
+      isPrivate: false
+      sortKey: -1749079404611
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_eb77e8ad9560432b8ba65689cccf8760
+      - id: pair_c62268fbf8674813932370f856e02967
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoianVhbjEyMyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5MDc5MTk1LCJleHAiOjE3NDkwODYzOTV9.TuP3lfPQCt9aQQe-vNLa3JWSuYCEeBW182P4vtv0yxo
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/api/gastos/subir-cartola
+    name: Prueba de lectura
+    meta:
+      id: req_ca5cd8d5367f40aea52db695b17e6971
+      created: 1749182097260
+      modified: 1749266666210
+      isPrivate: false
+      sortKey: -1749182097260
+    method: POST
+    body:
+      mimeType: multipart/form-data
+      params:
+        - id: pair_51dbc2721d7648af952ffc98bb874ab3
+          name: archivo
+          disabled: false
+          type: file
+          fileName: C:\Users\Nemeyas\Desktop\Ramos\Ayudantia de IA\cartola-000001.xlsx
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+        id: pair_5624939bd2464ff096b3fb44c6568a11
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_49505e994071414eaa1439ff802a99a7
+      - id: pair_872587f4973b44f4bfa091ee590de350
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoianVhbjEyMyIsImVtYWlsIjoianVhbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5MjY2NjMwLCJleHAiOjE3NDkyNzM4MzB9.OR51e6mV5Vz_ckjl2FQ5quwGiqPMq4Zy9xLcJB5mVYo
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:3000/api/gastos/mios
+    name: Solicitud de casos
+    meta:
+      id: req_7f2234f3c4d24cc8bc439cc1de194691
+      created: 1749266326289
+      modified: 1749266903813
+      isPrivate: false
+      sortKey: -1749266326289
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+        id: pair_d25aa194d95840508781c8ec0d8b63b5
+      - id: pair_27e9b38926684619aceaab8e0025b5f6
+        name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoianVhbjEyMyIsImVtYWlsIjoianVhbkBleGFtcGxlLmNvbSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzQ5MjY2NjMwLCJleHAiOjE3NDkyNzM4MzB9.OR51e6mV5Vz_ckjl2FQ5quwGiqPMq4Zy9xLcJB5mVYo
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e994a5278228882d4dc1dcb767e5f79d7dcbb7ef
+    created: 1749001818891
+    modified: 1749001818891
+environments:
+  name: Base Environment
+  meta:
+    id: env_e994a5278228882d4dc1dcb767e5f79d7dcbb7ef
+    created: 1749001818888
+    modified: 1749001818888
+    isPrivate: false

@@ -49,7 +49,7 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 
 ## librerias necesarias y archivos necesarios:
 
-- para el funcionamiento del sistema se tiene que crear un archivo llamado .env dentro del backend y su contenido debe de ser lo que pusimos en el comentario de la entrega.
+- para el funcionamiento del sistema se tiene que crear un archivo llamado .env dentro del backend y su contenido debe de ser entregador por un canal seguro.
 
 estas se instalan de forma global, solo se tiene que abrir la terminal y ejecutar los siguientes comandos
 
@@ -162,3 +162,6 @@ El modelo de datos se centra en las entidades User y Gasto, con una relación de
 
 ## APIs
 - [Twelvedata](https://twelvedata.com/)
+
+## Insomnia
+- Se adjunto un archivo tipo yaml con las pruebas hechas en Insomnia para el backend

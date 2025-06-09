@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, PopoverController, AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // Asegúrate que la ruta sea correcta
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-profile-popover',
@@ -54,21 +54,15 @@ export class ProfilePopoverComponent implements OnInit {
     this.popoverCtrl.dismiss();
     this.authService.deleteProfile().subscribe({
       next: () => {
-        // La lógica de logout y redirección ya está en el servicio.
         console.log('Perfil borrado exitosamente.');
       },
       error: (err) => {
         console.error('Error al borrar el perfil', err);
-        // Opcional: Mostrar un toast o alerta de error al usuario.
       }
     });
   }
 
-
-
-
   logout() {
-    // Cerramos el popover y llamamos al método de logout
     this.popoverCtrl.dismiss();
     this.authService.logout();
   }

@@ -1,10 +1,10 @@
 .atras-button {
     position: absolute;
-    width: 80%; // más adaptable en móvil
+    width: 80%; 
     max-width: 120px;
     color: white;
     top: 85%;
-    left: 5%; // un poco más separado en pantallas pequeñas
+    left: 5%; 
     padding: 10px;
     border-radius: 5px;
     font-size: 16px;
@@ -16,6 +16,6 @@
     .atras-button {
       width: 120px;
       font-size: 18px;
-      left: 1%; // vuelve a estar más pegado al borde
+      left: 1%; 
     }
   }

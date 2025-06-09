@@ -5,7 +5,6 @@ import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 
-// Define una interfaz para la estructura del token decodificado
 interface DecodedToken {
   userId: number;
   username: string;
@@ -30,8 +29,6 @@ export class AuthService {
     this.loadToken();
   }
 
-  // --- MÉTODO AÑADIDO ---
-  // Un helper privado para verificar si existe un token al iniciar el servicio.
   private hasToken(): boolean {
     return !!localStorage.getItem('token');
   }
@@ -52,8 +49,6 @@ export class AuthService {
       tap((res) => {
         localStorage.setItem('token', res.token);
         this.decodedToken = jwtDecode(res.token);
-        // --- CAMBIO CLAVE AQUÍ ---
-        // Notificamos a todos los suscriptores que el usuario ha iniciado sesión.
         this.loggedIn.next(true);
       })
     );
@@ -62,8 +57,6 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.decodedToken = null;
-    // --- CAMBIO CLAVE AQUÍ ---
-    // Notificamos a todos los suscriptores que el usuario ha cerrado sesión.
     this.loggedIn.next(false);
     this.router.navigate(['/home']);
   }
@@ -77,10 +70,8 @@ export class AuthService {
       })
     };
 
-    // La URL debe coincidir con la que definiremos en el backend
   return this.http.delete(`${this.apiUrl}/profile`, httpOptions).pipe(
       tap(() => {
-        // Si el borrado es exitoso, cerramos la sesión del frontend
         this.logout();
       })
     );
@@ -96,10 +87,6 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
-  
-  // El método isLoggedIn() ya no es necesario para la reactividad, 
-  // pero lo podemos mantener si alguna parte del código lo necesita para una
-  // comprobación puntual. La cabecera usará isLoggedIn$.
 
   private getDecodedToken(): DecodedToken | null {
     if (!this.decodedToken) {

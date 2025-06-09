@@ -16,10 +16,6 @@
         <ion-item *ngFor="let miembro of miembros">
           <ion-label>{{ miembro.username }}</ion-label>
           
-          <ion-button slot="end" fill="clear" (click)="editarMiembro(miembro)">
-            <ion-icon name="open-outline"></ion-icon>
-          </ion-button>
-          
           <ion-button slot="end" fill="clear" (click)="borrarMiembro(miembro)">
             <ion-icon name="trash"></ion-icon>
           </ion-button>

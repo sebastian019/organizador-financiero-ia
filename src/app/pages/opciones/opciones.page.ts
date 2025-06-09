@@ -1,4 +1,3 @@
-// src/app/pages/opciones/opciones.page.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -10,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class OpcionesPage implements OnInit {
   
-  // Opciones de colores para el fondo
   backgroundColors = [
     { name: 'Blanco (Por defecto)', value: '#ffffff' },
     { name: 'Gris Claro', value: '#f0f2f5' },
@@ -18,7 +16,6 @@ export class OpcionesPage implements OnInit {
     { name: 'Negro', value: '#121212' },
   ];
 
-  // Opciones de colores para el header
   headerColors = [
     { name: 'Azul (Por defecto)', value: '#0d6efd' },
     { name: 'Verde', value: '#198754' },
@@ -32,7 +29,6 @@ export class OpcionesPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // Al cargar la página, establece los valores guardados
     this.selectedBackground = localStorage.getItem('theme-background') || '#ffffff';
     this.selectedHeader = localStorage.getItem('theme-header') || '#0d6efd';
   }
@@ -42,9 +38,6 @@ export class OpcionesPage implements OnInit {
     document.documentElement.style.setProperty('--ion-background-color', color);
     localStorage.setItem('theme-background', color);
 
-    /* **** AÑADIR ESTA LÓGICA **** */
-    // Si el color de fondo es oscuro, añadimos la clase 'dark' al body.
-    // Si no, la quitamos.
     if (color === '#121212') { 
       document.body.classList.add('dark');
       localStorage.setItem('theme-mode', 'dark');
@@ -52,12 +45,10 @@ export class OpcionesPage implements OnInit {
       document.body.classList.remove('dark');
       localStorage.setItem('theme-mode', 'light');
     }
-    /* **** FIN DE LÓGICA A AÑADIR **** */
   }
 
   changeHeaderColor(color: string) {
     this.selectedHeader = color;
-    // La variable --ion-color-primary afecta el --ion-toolbar-background por defecto
     document.documentElement.style.setProperty('--ion-color-primary', color);
     localStorage.setItem('theme-header', color);
   }

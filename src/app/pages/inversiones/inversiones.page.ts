@@ -74,7 +74,6 @@ export class InversionesPage implements OnInit {
     this.inversionesService.obtenerDatosAccion(accion.symbol).subscribe(response => {
       const valores = response.values || [];
       if (valores.length >= 2) {
-        // Actualizamos precio y cambio
         const ultimo = Number(valores[0].close);
         const anterior = Number(valores[1].close);
         const cambio = ((ultimo - anterior) / anterior) * 100;
@@ -86,7 +85,6 @@ export class InversionesPage implements OnInit {
         this.acciones[this.activoIndex].cambio = 0;
       }
 
-      // Actualizamos datos para el gráfico
       this.lineChartData.labels = valores.map((v: any) => v.datetime).reverse();
       this.lineChartData.datasets[0].data = valores.map((v: any) => Number(v.close)).reverse();
       this.lineChartData.datasets[0].label = accion.nombre;

@@ -15,6 +15,69 @@
 ## Resumen del Proyecto
 Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante inteligencia artificial, ofreciendo análisis de gastos, predicciones financieras y asesoramiento personalizado. Además, introduce un Plan Familiar, donde un administrador puede gestionar los gastos del grupo, establecer presupuestos compartidos y monitorear metas de ahorro.
 
+## Implementaciones respecto a la primera entrego
+
+- La pagina ahora permite el inicio y registro de el usuario
+
+- La pagina de consulta gpt esta implementada ocupando la api de chatgpt, pero ahora mismo no esta funcional ya que necesitamos comprar tockens para su funcionamiento.
+
+- La pagina inversiones ahora permite navegar entre las 10 acciones más famosas de la bolsa internacional (aip Twelvedata).
+    - Además muestra el precio actual en dolares y el porcentaje que ha variado.
+    - Tambíen acompañado de la accion está un gráfico que muestra la variacion de precio en un intervalo de tiempo.
+
+    - A esta pagina se le agregó el boton invertir, donde al presionarlo te redirige a otra pagina, la cual te permite elegir la cantidad y 'compar' acciones (lo de comprar es meramente representativo y no funcional, además al aumentar la cantidad de acciones a comprar el monto total no sube, porque es representativo).
+
+- La pagina de familia:
+- Se agregó el sistema de Familia que relaciona usuarios de la base de datos en un mismo grupo familiar.  
+- Se agregó las funcionalidades de los botones de agregar y eliminar miembros de la familia del usuario logeado.
+- Se agregó un sistema de formularios para agregar usuarios de la familia.
+- Se agregó un sistema para mostrar los miembros de la familia del usuario logeado.
+
+- La pagina de gastos:
+- Se agrego un sistema para leer las cartolas de BancoEstado en formato excel.
+- Se agrego una funcion para mostrar un grafico de estilo torta que muestra los gastos segun el origen del cobro
+
+- se cambio el header de todas las paginas, ya que antes cada pagina tenia un header propio, pero este era el mismo, ahora existe un solo header el cual esta declarado como un componente el cual usan las paginas.
+
+-cuando el usuario inicia sesion, en el header le aparece un icono con la inicial de su nombre el cual es un menu desplegable, cuando le hace click, le aparece su nombre, correo y la opcion de borrar cuenta y cerrar sesion, para borrar la cuenta le pide una confirmacion antes.
+
+- tambien se implemento un menu deslizante el cual aparece despues de iniciar sesion, este le muestra opciones llamadas inversion, familia, gastos, consulta gpt y configuracion, al hacer click en cada una te lleva a la pagina mencionada.
+
+- se implemento una pagina llamada configuracion la cual te permite cambiar los colores del header, botones y fondo de la pagina.
+
+- para el manejo de la base de datos:
+
+## librerias necesarias y archivos necesarios:
+
+- para el funcionamiento del sistema se tiene que crear un archivo llamado .env dentro del backend y su contenido debe de ser lo que pusimos en el comentario de la entrega.
+
+estas se instalan de forma global, solo se tiene que abrir la terminal y ejecutar los siguientes comandos
+
+- npm install multer
+
+- npm install ng2-charts@5.0.0 --legacy-peer-deps
+
+- npm install jwt-decode --legacy-peer-deps
+
+ las siguientes se tienen que instalar dentro de la carpeta del backend, primero se ejecuta el comando cd backend en la terminal, luego de esto ejecutar estos comandos:
+
+- npm install
+
+- npx prisma generate
+
+- npm install openai
+
+- npm install multer
+
+## Puesta en marcha de el servidor(Backend) y pagina(Frontend)
+
+- (Backend)para abrir el server: cd backend, luego npm run dev
+
+- (Frontend)para abrir la pagina: ionic serve
+
+- para visualizar la base de datos: cd backend, luego npx prisma studio
+
+
 ---
 ## Requerimientos
 
@@ -77,6 +140,14 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 ## Prototipo de diseño 
 [Figma - Prototipo de Organizador Financiero con IA](https://www.figma.com/design/bopd0b4wjxBKJ3s1oWh7rZ/Organizador-Financiero-con-IA?node-id=0-1&m=dev)
 
+
+---
+
+## MR Base de datos
+
+[Base de datos diseñada en draw.io](https://drive.google.com/file/d/1IfvyDlTB2Y5G1iDDLz19qFLkyXItX8qh/view?usp=sharing)
+El modelo de datos se centra en las entidades User y Gasto, con una relación de uno a muchos.
+
 ---
 ## Liberías usadas con Angular
 - chart.js (Implementación a futuro) 
@@ -88,3 +159,6 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 - **TypeScript**
 - **Angular Router** (para navegación entre vistas)
 - Visual Studio Code
+
+## APIs
+- [Twelvedata](https://twelvedata.com/)

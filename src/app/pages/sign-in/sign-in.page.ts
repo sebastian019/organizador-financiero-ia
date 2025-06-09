@@ -34,13 +34,11 @@ export class SignInPage implements OnInit {
 
     this.authService.login({ email, password }).subscribe({
       next: (res) => {
-        // 2. Ya no se necesita saveToken, la lógica está en el servicio.
         console.log('Login exitoso', res);
         // Redirige al menú principal después del login.
         window.location.href = '/menu-principal';
       },
       error: (err) => {
-        // Manejo de errores
         console.error('Error en el login', err);
         alert(err.error.error || 'Credenciales inválidas');
       }
@@ -48,6 +46,6 @@ export class SignInPage implements OnInit {
   }
 
   irAHome() {
-    this.router.navigate(['/home']); // o la ruta de inicio que tengas
+    this.router.navigate(['/home']);
   }
 }

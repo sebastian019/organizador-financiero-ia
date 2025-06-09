@@ -51,16 +51,6 @@ const routes: Routes = [
     path: 'invertir',
     loadChildren: () => import('./pages/invertir/invertir.module').then( m => m.InvertirPageModule)
   }
-
-
-
-  /*{
-    path: 'login',
-    loadChildren: () => import('./pages/menu-principal/menu-principal.module').then( m => m.MenuPrincipalPageModule)
-  },*/
-
-
- 
   
 ];
 

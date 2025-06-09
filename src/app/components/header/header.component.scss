@@ -1,4 +1,3 @@
-// Ruta: src/app/components/header/header.component.scss
 .main-header-component {
   ion-toolbar {
     --color: #ffffff;
@@ -42,12 +41,10 @@
     justify-content: center;
     font-weight: bold;
     cursor: pointer;
-    // Se añade margen a la derecha del avatar para separarlo del botón de menú
     margin-right: 8px; 
   }
   
   ion-menu-button {
-    // Se elimina el margen de aquí
     --color: var(--ion-color-primary-contrast); 
   }
 

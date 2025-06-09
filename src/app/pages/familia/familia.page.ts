@@ -90,7 +90,6 @@ export class FamiliaPage implements OnInit {
         const errorData = await res.json();
         throw new Error(errorData.error || 'Error desconocido');
       }
-      // Opcional: actualizar la lista sin recargar
       this.miembros = this.miembros.filter(m => m.id_usuario !== miembro.id_usuario);
       alert('Familiar eliminado exitosamente');
     })
@@ -103,7 +102,6 @@ export class FamiliaPage implements OnInit {
 
   obtenerMiembros() {
     const token = localStorage.getItem('token');
-    console.log('Token enviado:', token);
     fetch(`http://localhost:3000/api/familia/listar`, {
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -111,7 +109,7 @@ export class FamiliaPage implements OnInit {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('Data recibida:', data);
+        //console.log('Data recibida:', data);
         this.miembros = data;
       })
       .catch(error => {

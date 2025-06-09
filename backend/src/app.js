@@ -7,18 +7,16 @@ app.use(express.urlencoded({ extended: true }));
 // Middlewares
 app.use(cors());
 app.use(express.json());
-console.log('🔐 JWT_SECRET:', process.env.JWT_SECRET);
 // Rutas
 const familiaRoutes = require('./routes/familia.routes');
 const authRoutes = require('./routes/auth.routes');
 const aiRoutes = require('./routes/ai.routes.js');
-console.log(typeof aiRoutes);  // debería salir "function" o "object"
 
 app.use('/api/familia', familiaRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/ai', aiRoutes); // ✅ esto requiere que aiRoutes sea un router
+app.use('/api/ai', aiRoutes); 
 
-// Ruta raíz de prueba
+
 app.get('/', (req, res) => {
   res.send('¡Bienvenido al backend del Organizador Financiero con IA!');
 });

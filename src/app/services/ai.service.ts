@@ -1,16 +1,13 @@
-// src/app/services/ai.service.ts
-
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service'; // Reutilizaremos el servicio de Auth para obtener el token
+import { AuthService } from './auth.service'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AiService {
 
-  // La URL base de nuestro backend. Asegúrate de que el puerto (3000) coincida con el de tu servidor.
   private apiUrl = 'http://localhost:3000/api/ai'; 
 
   constructor(private http: HttpClient, private authService: AuthService) { }

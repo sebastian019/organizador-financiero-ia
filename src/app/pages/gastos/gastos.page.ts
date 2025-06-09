@@ -30,7 +30,6 @@ export class GastosPage {
     const formData = new FormData();
     formData.append('archivo', this.selectedFile);
 
-    // Recupera el token del localStorage (o donde lo guardes)
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`
@@ -42,7 +41,7 @@ export class GastosPage {
           this.mensaje = 'Cartola cargada exitosamente.';
           setTimeout(() => {
             this.router.navigate(['/lista-gastos']);
-          }, 1000); // espera un segundo para mostrar mensaje
+          }, 1000);
         },
         error: (err) => {
           this.mensaje = 'Error al cargar la cartola: ' + (err.error?.error || err.message);

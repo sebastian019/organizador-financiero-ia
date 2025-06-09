@@ -7,26 +7,25 @@ const agregar = async (req, res) => {
   const { username } = req.body;
 
   try {
-    console.log('req.user:', req.user);
     const usuarioLogeado = await prisma.user.findUnique({
-      where: { username: req.user.username }, // Requiere que uses autenticación y hayas seteado req.user
+      where: { username: req.user.username }, 
     });
 
     if (!usuarioLogeado?.id_familia) {
         // Crea una nueva familia
         const nuevaFamilia = await prisma.familia.create({
             data: {
-            nombre: `${usuarioLogeado.username}-familia`, // o algo más elaborado
+            nombre: `${usuarioLogeado.username}-familia`,
             ingresos: 0
             },
         })
 
         await prisma.user.update({
             where: {
-                id_usuario: usuarioLogeado.id_usuario,  // ¡Usa id_usuario, no id!
+                id_usuario: usuarioLogeado.id_usuario,
             },
             data: {
-                id_familia: nuevaFamilia.id_familia,   // Aquí actualizas el campo correcto
+                id_familia: nuevaFamilia.id_familia,
             }
         });
     }
@@ -106,9 +105,6 @@ const eliminar = async (req, res) => {
 
 
 const listar = async (req, res) => {
-    console.log('Entrando en listar');
-    console.log('req.user:', req.user);
-
     try {
         const usuarioLogeado = await prisma.user.findUnique({
         where: { username: req.user.username },
@@ -125,7 +121,7 @@ const listar = async (req, res) => {
         username: true
       }
     });
-    console.log("Miembros a enviar:", miembros);
+
     res.json(miembros);
   } catch (error) {
     console.error('Error al listar miembros:', error);

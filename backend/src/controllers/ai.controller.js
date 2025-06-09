@@ -1,11 +1,8 @@
-// backend/src/controllers/ai.controller.js
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
-
-console.log('API KEY:', process.env.OPENAI_API_KEY);
 
 const getFinancialAdvice = async (req, res) => {
   try {

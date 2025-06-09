@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class InversionesService {
 
-  private apiKey = '485eecfb16c24606bbbd197e711d9225'; // Aquí pones tu API key de TwelveData
+  private apiKey = '485eecfb16c24606bbbd197e711d9225';
   private baseUrl = 'https://api.twelvedata.com';
 
   constructor(private http: HttpClient) { }

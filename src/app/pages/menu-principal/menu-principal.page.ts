@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service'; // <-- Importa el servicio
+import { AuthService } from '../../services/auth.service'; 
 
 @Component({
   selector: 'app-menu-principal',
@@ -10,12 +10,11 @@ import { AuthService } from '../../services/auth.service'; // <-- Importa el ser
 })
 export class MenuPrincipalPage implements OnInit {
 
-  public username: string | null = null; // <-- Añade esta propiedad
+  public username: string | null = null; 
 
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
-    // Llama al método del servicio para obtener el nombre de usuario
     this.username = this.authService.getUsername();
   }
 

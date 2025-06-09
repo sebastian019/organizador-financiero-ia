@@ -7,4 +7,4 @@ const { verifyToken } = require('../middlewares/auth.middleware');
 // Ruta protegida para consultar al asistente financiero
 router.post('/consultar', verifyToken, getFinancialAdvice);
 
-module.exports = router; // ✅ DEBE EXPORTAR DIRECTAMENTE el router
+module.exports = router; 

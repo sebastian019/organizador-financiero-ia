@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, NgZone } from '@angular/core'; // 1. Importar NgZone
+import { Component, OnInit, Input, OnDestroy, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule, PopoverController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -25,12 +25,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     public authService: AuthService,
     private popoverCtrl: PopoverController,
-    private zone: NgZone // 2. Inyectar NgZone
+    private zone: NgZone 
   ) {}
 
   ngOnInit() {
     this.authSubscription = this.authService.isLoggedIn$.subscribe(isLoggedIn => {
-      // 3. Forzamos que la actualización se ejecute dentro de la "zona" de Angular
       this.zone.run(() => {
         this.isUserLoggedIn = isLoggedIn;
         if (isLoggedIn) {

@@ -21,7 +21,7 @@ export class ListaGastosPage implements OnInit {
       next: (res) => {
         this.datos = res;
         this.labels = res.map((g: any) => g.descripcion);
-        this.data = res.map((g: any) => g.totalGastos); // o totalAbonos para otro gráfico
+        this.data = res.map((g: any) => g.totalGastos);
         this.cargando = false;
       },
       error: (err) => {

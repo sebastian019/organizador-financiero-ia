@@ -4,7 +4,6 @@
   <div class="container-acciones">
     <h2 class="titulo-principal" style="text-align: center;">ACCIONES DE MERCADO</h2>
 
-    <!-- Información de la acción actual -->
     <div class="info-accion" style="text-align: center; margin-top: 20px;">
       <h3>{{ acciones[activoIndex].nombre }}</h3>
       <p>
@@ -18,7 +17,6 @@
       </p>
     </div>
 
-    <!-- Gráfico -->
     <div class="grafico-accion" style="display: flex; justify-content: center; margin-top: 20px;">
       <canvas baseChart
         [data]="lineChartData"
@@ -28,7 +26,6 @@
       </canvas>
     </div>
 
-    <!-- Botones navegación -->
     <div class="botones-navegacion" style="display: flex; justify-content: center; gap: 10px; margin-top: 25px;">
       <ion-button (click)="anteriorAccion()" [disabled]="activoIndex === 0" color="medium">Anterior</ion-button>
       <ion-button (click)="irInvertir()" color="primary">Invertir</ion-button>
@@ -36,7 +33,6 @@
     </div>
   </div>
 
-  <!-- Botones fijos abajo -->
   <div style="position: fixed; bottom: 10px; left: 10px;">
     <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRÁS</ion-button>
   </div>

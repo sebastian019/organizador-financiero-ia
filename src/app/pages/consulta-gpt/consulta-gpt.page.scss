@@ -1,43 +1,38 @@
-// src/app/pages/consulta-gpt/consulta-gpt.page.scss
-
-
 .chat-container {
   display: flex;
   flex-direction: column;
-  gap: 12px; // Espacio entre mensajes
-  padding-bottom: 10px; // Espacio extra al final
+  gap: 12px;
+  padding-bottom: 10px;
 }
 
 .chat-message {
   padding: 10px 15px;
   border-radius: 20px;
   max-width: 85%;
-  word-wrap: break-word; // Para que el texto largo no se salga de la burbuja
-  
+  word-wrap: break-word; 
   p {
-    margin: 0; // Quita el margen por defecto de los párrafos
+    margin: 0; 
   }
 }
 
 .user-message {
-  background-color: var(--ion-color-primary); // Usa el color primario de tu app
+  background-color: var(--ion-color-primary); 
   color: var(--ion-color-primary-contrast);
-  align-self: flex-end; // Alinea los mensajes del usuario a la derecha
+  align-self: flex-end; 
   border-bottom-right-radius: 4px;
 }
 
 .bot-message {
-  background-color: #ffffff; // Un fondo blanco para el bot
+  background-color: #ffffff; 
   color: #333333;
-  align-self: flex-start; // Alinea los mensajes del bot a la izquierda
+  align-self: flex-start; 
   border-bottom-left-radius: 4px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); // Una sombra sutil
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); 
 }
 
 ion-footer {
   ion-toolbar {
-    /* **** LÍNEA MODIFICADA **** */
-    --background: var(--ion-toolbar-background); // Usará el mismo color que el header
+    --background: var(--ion-toolbar-background); 
     padding: 5px 0;
   }
   ion-item {

@@ -20,7 +20,6 @@ export class ModalGraficoComponent {
   constructor(private modalCtrl: ModalController) {}
 
   ngOnInit() {
-    // Simular carga de datos de los últimos 3 meses
     setTimeout(() => {
       this.lineChartData = {
         labels: ['Abr', 'May', 'Jun'],

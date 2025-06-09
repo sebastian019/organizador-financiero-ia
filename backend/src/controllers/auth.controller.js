@@ -50,11 +50,11 @@ const login = async (req, res) => {
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) return res.status(400).json({ error: 'Credenciales inválidas' });
 
-    const token = jwt.sign(
-      { userId: user.id, username: user.username, email: user.email, role: user.role }, // <-- Añadir email
-      SECRET,
-      { expiresIn: '2h' }
-    );
+  const token = jwt.sign(
+    { id_usuario: user.id_usuario, username: user.username, role: user.role },
+    SECRET,
+    { expiresIn: '2h' }
+  );
 
     res.json({ token });
   } catch (error) {
@@ -63,17 +63,14 @@ const login = async (req, res) => {
   }
 };
 
-// **** AÑADIR ESTA NUEVA FUNCIÓN COMPLETA ****
 const deleteProfile = async (req, res) => {
   // El userId lo obtenemos del token que ya fue verificado
-  const userId = req.user.userId;
+  const id_usuario = req.user.id_usuario; 
 
   try {
-    // Gracias a la migración que hicimos, al borrar el usuario,
-    // Prisma borrará también todos sus gastos asociados en cascada.
     await prisma.user.delete({
       where: {
-        id: userId,
+        id_usuario: id_usuario,
       },
     });
 

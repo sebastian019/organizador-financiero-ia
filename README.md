@@ -49,7 +49,13 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 
 ## librerias necesarias y archivos necesarios:
 
-- para el funcionamiento del sistema se tiene que crear un archivo llamado .env dentro del backend y su contenido debe de ser entregador por un canal seguro.
+- Para el funcionamiento del sistema se tiene que crear un archivo llamado .env dentro del backend y su contenido debe de ser entregador por un canal seguro. Osea aqui:
+
+//Inicio .env
+JWT_SECRET="secretoSuperSeguro"
+OPENAI_API_KEY=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
+DATABASE_URL="postgresql://postgres:okEKQJlRxeaNGLNtgnkTFSVognIskEmK@mainline.proxy.rlwy.net:30684/railway"
+//Final .env
 
 estas se instalan de forma global, solo se tiene que abrir la terminal y ejecutar los siguientes comandos
 

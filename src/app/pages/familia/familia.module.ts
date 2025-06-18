@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- ASEGÚRATE DE TENER ESTOS
+
 import { IonicModule } from '@ionic/angular';
+
 import { FamiliaPageRoutingModule } from './familia-routing.module';
+
 import { FamiliaPage } from './familia.page';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from '../../components/header/header.component'
+import { HeaderComponent } from '../../components/header/header.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule, // <-- Y DE QUE ESTÉ AQUÍ
     IonicModule,
     FamiliaPageRoutingModule,
-    ReactiveFormsModule,
     HeaderComponent
   ],
   declarations: [FamiliaPage]

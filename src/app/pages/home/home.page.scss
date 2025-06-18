@@ -53,18 +53,22 @@ p {
   --padding-bottom: 18px;
   font-weight: 600;
   height: 52px;
-  transition: transform 0.2s ease-out;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
   }
 }
 
 // Botón secundario (Iniciar Sesión)
 .btn-secundario {
   --color: #ffffff;
-  --background-hover: rgba(255, 255, 255, 0.1);
-  font-weight: 500;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+  &:hover {
+    --background-hover: rgba(255, 255, 255, 0.15);
+  }
 }
 
 // --- Animaciones de entrada ---

@@ -1,8 +1,8 @@
-// Este estilo se aplica a la barra de herramientas del header
+// Estilo principal para la barra de herramientas del header
 ion-toolbar {
-  // Aseguramos que el degradado global se aplique
+  // Aseguramos que el degradado global se aplique siempre
   --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
-  --color: white;
+  --color: white; // Color del texto y los íconos
   // Añadimos una sutil línea inferior para darle definición
   --border-width: 0 0 1px 0;
   --border-color: rgba(255, 255, 255, 0.15);
@@ -15,9 +15,10 @@ ion-toolbar {
   justify-content: center;
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 4px 12px;
   border-radius: 8px;
   transition: background-color 0.2s ease;
 
@@ -35,12 +36,12 @@ ion-toolbar {
 
 // Estilo para el texto "SmartCapital"
 .header-logo-title {
-  font-size: 1.5em;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  padding: 0; // Quitamos el padding por defecto para alinearlo bien
+  padding: 0;
   color: white;
-  position: static; // Anulamos la posición por defecto
+  position: static;
 }
 
 // Estilos para el botón de perfil
@@ -57,7 +58,7 @@ ion-toolbar {
     justify-content: center;
     font-weight: 600;
     color: white;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     transition: transform 0.2s ease;
 
     &:hover {
@@ -66,7 +67,7 @@ ion-toolbar {
   }
 }
 
-// Aseguramos que el botón de menú sea visible
+// Aseguramos que el botón de menú sea visible sobre el degradado
 ion-menu-button {
   --color: white;
 }

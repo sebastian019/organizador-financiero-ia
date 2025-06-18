@@ -1,43 +1,46 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-  <div class="container-acciones">
-    <h2 class="titulo-principal" style="text-align: center;">ACCIONES DE MERCADO</h2>
+  <div class="container">
+    <ion-card class="stock-card">
+      <ion-card-header class="ion-text-center">
+        <ion-card-subtitle>Análisis de Mercado</ion-card-subtitle>
+        <ion-card-title>{{ acciones[activoIndex].nombre }}</ion-card-title>
+        <p class="price-info">
+          Precio: ${{ acciones[activoIndex].precio.toFixed(2) }}
+          <span [ngClass]="{
+              'price-up': acciones[activoIndex].cambio > 0, 
+              'price-down': acciones[activoIndex].cambio < 0
+            }">
+            ({{ acciones[activoIndex].cambio >= 0 ? '+' : '' }}{{ acciones[activoIndex].cambio.toFixed(2) }}%)
+          </span>
+        </p>
+      </ion-card-header>
 
-    <div class="info-accion" style="text-align: center; margin-top: 20px;">
-      <h3>{{ acciones[activoIndex].nombre }}</h3>
-      <p>
-        Precio: ${{ acciones[activoIndex].precio.toFixed(2) }} |
-        <span [style.color]="
-          acciones[activoIndex].cambio > 0 ? 'green' :
-          acciones[activoIndex].cambio < 0 ? 'red' : 'gray'">
-          {{ acciones[activoIndex].cambio >= 0 ? '+' : '' }}
-          {{ acciones[activoIndex].cambio.toFixed(2) }}%
-        </span>
-      </p>
-    </div>
+      <ion-card-content>
+        <div class="chart-container">
+          <canvas baseChart
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [type]="lineChartType">
+          </canvas>
+        </div>
 
-    <div class="grafico-accion" style="display: flex; justify-content: center; margin-top: 20px;">
-      <canvas baseChart
-        [data]="lineChartData"
-        [options]="lineChartOptions"
-        [type]="lineChartType"
-        style="max-width: 100%; width: 90%; max-height: 300px;">
-      </canvas>
-    </div>
+        <div class="action-buttons">
+          <ion-button fill="clear" (click)="anteriorAccion()" [disabled]="activoIndex === 0">
+            <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+          </ion-button>
+          
+          <ion-button class="invest-button" (click)="irInvertir()">
+            <ion-icon name="analytics-outline" slot="start"></ion-icon>
+            Invertir en esta Acción
+          </ion-button>
 
-    <div class="botones-navegacion" style="display: flex; justify-content: center; gap: 10px; margin-top: 25px;">
-      <ion-button (click)="anteriorAccion()" [disabled]="activoIndex === 0" color="medium">Anterior</ion-button>
-      <ion-button (click)="irInvertir()" color="primary">Invertir</ion-button>
-        <ion-button (click)="siguienteAccion()" [disabled]="activoIndex === acciones.length - 1" color="medium">Siguiente</ion-button>
-    </div>
-  </div>
-
-  <div style="position: fixed; bottom: 10px; left: 10px;">
-    <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRÁS</ion-button>
-  </div>
-
-  <div style="position: fixed; bottom: 10px; right: 10px;">
-    <ion-button expand="block" class="consulta-gpt-button" (click)="irConsultaGpt()">CONSULTA GPT</ion-button>
+          <ion-button fill="clear" (click)="siguienteAccion()" [disabled]="activoIndex === acciones.length - 1">
+            <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>

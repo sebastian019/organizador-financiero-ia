@@ -1,172 +1,103 @@
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  height: 100%;
-  padding: 16px;
-  position: relative;
+ion-content {
+  // Usamos el fondo gris claro estándar
+  --background: #f4f5f8;
 }
 
-
-
-.title2 {
-  font-size: 32px;
-  font-weight: bold;
-  margin-top: -200px;
-  padding-top:100px;
+// Estilos para las tarjetas
+ion-card {
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
 }
 
-
-
-.gear-icon,
-.trash-icon {
-  width: 60px;
-  height: 24px;
-}
-
-.trash-icon {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-}
-
-.list {
-  position: absolute;
-  --background: black;
-  background-color: gray;
-  --color: black;
-  top: 30%;
-  left: 30px;
-  transform: translateY(-50%);
-}
-
-.add-button {
-  --background: black;
-  --color: white;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  position: absolute;
-  top: 40%;
-  left: 30px;
-}
-
-.atras-button {
-  position: absolute;
-  width: 100px;
-  color: white;
-  top: 90%;
-  left: 6%;
-  padding: 8px;
-  font-size: 14px;
-  border-radius: 5px;
-}
-
-.main-circle {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  border: 8px solid #2d2d2d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  margin: 100px 0;
-}
-
-.dollar-symbol {
-  font-size: 64px;
-  font-weight: bold;
-}
-
-.button-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  margin-top: 20px;
-  align-items: center;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.side-button {
-  width: 100px;
-  background-color: #2d2d2d;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.modo-oscuro {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-@media (min-width: 768px) {
-  .title {
-    font-size: 24px;
+// Tarjeta de Resumen
+.summary-card {
+  ion-card-content {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0;
   }
 
-  .title2 {
-    font-size: 48px;
+  .summary-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    ion-icon {
+      font-size: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      color: var(--ion-color-medium-shade);
+      font-weight: 500;
+    }
+  }
+}
+
+// Tarjeta con la lista de miembros
+.member-list-card {
+  ion-item {
+    --padding-start: 16px;
+    --inner-padding-end: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .member-item ion-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--ion-color-secondary);
+    
+    .initials {
+      color: var(--ion-color-secondary-contrast);
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  .tralalero {
-    width: 80px;
+  h3 {
+    font-weight: 600;
+  }
+  
+  p {
+    color: var(--ion-color-medium-shade);
+    font-size: 0.9rem;
   }
 
-  .gear-icon,
-  .trash-icon {
-    width: 100px;
-    height: 30px;
+  // Estilo para el campo de añadir miembro
+  .add-member-item {
+    --background: #f9f9fb;
+    border-radius: 12px;
+    margin: 8px 16px;
   }
 
-  .add-button {
-    width: 45px;
-    height: 45px;
-    left: 100px;
-  }
+  // Estilo para la lista vacía
+  .empty-list {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--ion-color-medium);
 
-  .list {
-    left: 100px;
+    ion-icon {
+      font-size: 4rem;
+    }
+    span {
+      font-size: 0.9rem;
+    }
   }
+}
 
-  .main-circle {
-    width: 350px;
-    height: 350px;
-    font-size: 48px;
-    margin: 120px 0;
-  }
-
-  .dollar-symbol {
-    font-size: 128px;
-  }
-
-  .button-grid {
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 600px;
-  }
-
-  .side-button {
-    width: 120px;
-  }
-
-  .atras-button {
-    width: 120px;
-    font-size: 16px;
-  }
+// Botón flotante
+ion-fab-button {
+  --background: var(--ion-color-primary);
+  --background-activated: var(--ion-color-primary-shade);
 }

@@ -1,45 +1,69 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-  <div class="dashboard-container">
-    <ion-title class="title2">Nombre Familia</ion-title>
+  <ion-card class="summary-card">
+    <ion-card-header>
+      <ion-card-subtitle>Tu Grupo Familiar</ion-card-subtitle>
+      <ion-card-title>Familia {{ username }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="summary-item">
+        <ion-icon name="people-outline" color="primary"></ion-icon>
+        <ion-label>
+          <h2>{{ miembros.length }}</h2>
+          <p>Miembros en el grupo</p>
+        </ion-label>
+      </div>
+      <div class="summary-item">
+        <ion-icon name="cash-outline" color="secondary"></ion-icon>
+        <ion-label>
+          <h2>$1,850.50</h2>
+          <p>Gasto Total (Simulado)</p>
+        </ion-label>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
-    <div class="main-circle">
-      <div class="dollar-symbol">$</div>
-    </div>
-
-    <div class="button-grid">
-    </div>
-
-    <div class="lista">
-      <ion-list class="list" lines="none" fill="none">
-        <ion-item *ngFor="let miembro of miembros">
-          <ion-label>{{ miembro.username }}</ion-label>
-          
-          <ion-button slot="end" fill="clear" (click)="borrarMiembro(miembro)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-button>
-        </ion-item>
-      </ion-list>
-    </div>
-      
-    <ion-fab-button shape="circle" class="add-button" (click)="mostrarForm()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-
-    <form [formGroup]="formulario" *ngIf="mostrarFormulario">
-      <ion-item>
-        <ion-label position="floating">Nombre de usuario</ion-label>
-        <ion-input type="text" formControlName="username" autocomplete="off"></ion-input>
+  <ion-card class="member-list-card">
+    <ion-card-header>
+      <ion-card-title>Administrar Miembros</ion-card-title>
+    </ion-card-header>
+    
+    <ion-list lines="none">
+      <ion-item *ngIf="mostrarFormulario" class="add-member-item">
+        <ion-input label="Email del nuevo miembro" labelPlacement="floating" formControlName="email" class="add-member-input"></ion-input>
+        <ion-button (click)="agregarMiembro()" [disabled]="formulario.invalid" slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="checkmark-circle" color="success"></ion-icon>
+        </ion-button>
+        <ion-button (click)="ocultarForm()" slot="end" fill="clear">
+          <ion-icon slot="icon-only" name="close-circle" color="danger"></ion-icon>
+        </ion-button>
       </ion-item>
 
-      <ion-button (click)="agregarMiembro()" [disabled]="formulario.invalid">Guardar</ion-button>
-      <ion-button (click)="ocultarForm()">Cancelar</ion-button>
-    </form>
-
-
-    <div class="atras">
-      <ion-button expand="block" class="atras-button" (click)="irAMenuPrincipal()">ATRAS</ion-button>
+      <ion-item *ngFor="let miembro of miembros" class="member-item">
+        <ion-avatar slot="start">
+          <div class="initials">{{ miembro.username.charAt(0).toUpperCase() }}</div>
+        </ion-avatar>
+        <ion-label>
+          <h3>{{ miembro.username }}</h3>
+          <p>{{ miembro.email }}</p>
+        </ion-label>
+        <ion-button (click)="borrarMiembro(miembro)" slot="end" fill="clear" color="medium">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    
+    <div *ngIf="miembros.length === 0 && !mostrarFormulario" class="empty-list">
+      <ion-icon name="people-circle-outline"></ion-icon>
+      <p>Tu grupo familiar está vacío.</p>
+      <span>Usa el botón '+' para añadir a tu primer miembro.</span>
     </div>
-  </div>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button (click)="mostrarForm()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

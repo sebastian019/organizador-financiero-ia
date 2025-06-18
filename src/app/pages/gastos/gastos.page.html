@@ -1,15 +1,37 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
-    <ion-item>
-      <ion-label>Archivo Cartola (.xlsx)</ion-label>
-      <input type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" required>
-    </ion-item>
-    <ion-button expand="block" type="submit" [disabled]="!selectedFile">Subir Cartola</ion-button>
-  </form>
+  <div class="container">
+    <ion-card class="upload-card">
+      <ion-card-header>
+        <ion-card-title>Analiza tus Gastos</ion-card-title>
+        <ion-card-subtitle>Sube tu cartola en formato .xlsx para empezar</ion-card-subtitle>
+      </ion-card-header>
 
-  <ion-text *ngIf="mensaje" color="primary">
-    <p>{{ mensaje }}</p>
-  </ion-text>
+      <ion-card-content>
+        <div class="drop-zone" (click)="fileInput.click()">
+          <ion-icon name="cloud-upload-outline"></ion-icon>
+          <p class="main-text">Arrastra y suelta tu archivo aquí</p>
+          <p class="sub-text">o haz clic para seleccionar</p>
+          <input #fileInput type="file" (change)="onFileChange($event)" accept=".xlsx, .xls" hidden>
+        </div>
+
+        <div *ngIf="selectedFile" class="file-info">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <span>{{ selectedFile.name }}</span>
+        </div>
+
+        <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <ion-button expand="block" type="submit" [disabled]="!selectedFile" class="submit-button">
+            <ion-icon name="analytics-outline" slot="start"></ion-icon>
+            Procesar Cartola
+          </ion-button>
+        </form>
+
+        <ion-text *ngIf="mensaje" color="primary" class="ion-text-center">
+          <p>{{ mensaje }}</p>
+        </ion-text>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

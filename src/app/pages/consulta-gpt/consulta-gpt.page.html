@@ -2,31 +2,43 @@
 
 <ion-content class="ion-padding">
   <div class="chat-container">
-    <div *ngFor="let message of chatMessages" class="chat-message" [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
-      <p>{{ message.text }}</p>
+    <div *ngFor="let message of chatMessages" 
+         class="chat-message" 
+         [ngClass]="{
+           'user-message': message.sender === 'user', 
+           'bot-message': message.sender === 'bot'
+         }">
+
+
+      
+      <div class="message-bubble">
+        <p>{{ message.text }}</p>
+      </div>
+
     </div>
     <div *ngIf="isLoading" class="chat-message bot-message">
-      <ion-spinner name="dots"></ion-spinner>
+
+      <div class="message-bubble">
+        <ion-spinner name="dots"></ion-spinner>
+      </div>
     </div>
   </div>
 </ion-content>
 
-<ion-footer>
+<ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-item>
+    <div class="chat-input-container">
       <ion-textarea
         [(ngModel)]="userInput"
         placeholder="Escribe tu consulta aquí..."
         (keyup.enter)="sendMessage()"
         [disabled]="isLoading"
-        rows="1"
+        [autoGrow]="true"
         class="chat-input">
       </ion-textarea>
-      <ion-button (click)="sendMessage()" slot="end" [disabled]="!userInput.trim() || isLoading">
+      <ion-button (click)="sendMessage()" [disabled]="!userInput.trim() || isLoading" shape="circle" class="send-button">
         <ion-icon name="send" slot="icon-only"></ion-icon>
       </ion-button>
-    </ion-item>
+    </div>
   </ion-toolbar>
 </ion-footer>
-
-

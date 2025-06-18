@@ -1,20 +1,22 @@
-<ion-header class="ion-no-border main-header-component">
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <img 
-        src="assets/raw.png" 
-        alt="Logo" 
-        class="raw-logo"
-      />
+      <ion-menu-button auto-hide="false"></ion-menu-button>
     </ion-buttons>
-    <ion-title class="header-main-title">{{ pageTitle }}</ion-title>
+
+    <div class="header-logo-container" [routerLink]="['/menu-principal']">
+      <img src="/assets/icon/raw.png" alt="SmartCapital Logo" class="header-logo-img">
+      <ion-title class="header-logo-title">SmartCapital</ion-title>
+    </div>
 
     <ion-buttons slot="end">
-      <ion-avatar *ngIf="isUserLoggedIn" (click)="presentPopover($event)" class="profile-avatar">
-        <span>{{ userInitials }}</span>
-      </ion-avatar>
-
-      <ion-menu-button *ngIf="isUserLoggedIn"></ion-menu-button>
+      <ion-button *ngIf="isUserLoggedIn" class="profile-button" (click)="presentPopover($event)">
+        <ion-avatar>
+          <span *ngIf="userInitials">{{ userInitials }}</span>
+          
+          <ion-icon *ngIf="!userInitials" name="person-outline"></ion-icon>
+        </ion-avatar>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

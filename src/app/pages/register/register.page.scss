@@ -1,21 +1,100 @@
-.atras-button {
-    position: absolute;
-    width: 80%; 
-    max-width: 120px;
-    color: white;
-    top: 85%;
-    left: 5%; 
-    padding: 10px;
-    border-radius: 5px;
-    font-size: 16px;
+// Fondo de la página con el degradado
+ion-content {
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+}
+
+// Contenedor para centrar todo
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+// Tarjeta principal con un borde y sombra más definidos
+.form-card {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  margin: 0;
+  padding: 16px 24px 32px 24px;
+
+  ion-card-header {
+    padding: 16px 0;
     text-align: center;
   }
   
-  /* Estilos para pantallas grandes (tablet, escritorio) */
-  @media (min-width: 768px) {
-    .atras-button {
-      width: 120px;
-      font-size: 18px;
-      left: 1%;
-    }
+  ion-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e2023; // Título oscuro para contraste
   }
+  
+  ion-card-subtitle {
+    font-size: 1rem;
+    color: #667; // Subtítulo gris
+    margin-top: 4px;
+  }
+}
+
+// Estilo definitivo para los campos de texto
+ion-item {
+  --background: #f9f9f9; // Fondo ligeramente gris para el campo
+  --border-color: rgba(0, 0, 0, 0.1);
+  --highlight-color: var(--ion-color-primary); // Color al seleccionar
+  --color: #333; // Color del texto que se escribe
+  
+  ion-label {
+    color: #555; // Color del texto de la etiqueta (ej. "Correo electrónico")
+    font-weight: 500;
+  }
+
+  ion-icon {
+    color: var(--ion-color-medium-shade); // Color gris para los iconos
+    margin-right: 6px;
+  }
+}
+
+// Botón principal
+.btn-principal {
+  --color: white; // Texto del botón blanco
+  height: 50px;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-transform: none; // Para que no esté en mayúsculas
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 24px !important;
+}
+
+// Botón secundario (Atrás)
+.btn-secundario {
+  margin-top: 24px;
+  --color: #ffffff; // Texto blanco
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.25); // Sombra para legibilidad
+}
+
+// --- Animaciones ---
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.delay-1 {
+  animation-delay: 0.2s;
+}

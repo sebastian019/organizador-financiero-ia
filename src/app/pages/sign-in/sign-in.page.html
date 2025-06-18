@@ -1,23 +1,35 @@
-<app-header ></app-header>
+<ion-content>
+  <div class="form-container">
+    <ion-card class="form-card animate-fade-in-up">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>¡Hola de nuevo!</ion-card-title>
+        <ion-card-subtitle>Ingresa para ver tus finanzas</ion-card-subtitle>
+      </ion-card-header>
 
-<ion-content class="ion-padding">
-  <form [formGroup]="formulario" (ngSubmit)="login()">
-    <ion-item>
-      <ion-label position="floating">Correo electrónico</ion-label>
-      <ion-input type="email" formControlName="email"></ion-input>
-    </ion-item>
+      <ion-card-content>
+        <form [formGroup]="formulario" (ngSubmit)="login()">
+          <ion-item fill="outline" shape="round" class="ion-margin-bottom">
+            <ion-icon name="mail-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input type="email" formControlName="email" enterkeyhint="next"></ion-input>
+          </ion-item>
 
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password" formControlName="password"></ion-input>
-    </ion-item>
+          <ion-item fill="outline" shape="round" class="ion-margin-bottom">
+            <ion-icon name="lock-closed-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="password" enterkeyhint="go"></ion-input>
+          </ion-item>
 
-    <ion-button expand="block" color="primary" type="submit">
-      INGRESAR
+          <ion-button expand="block" type="submit" [disabled]="!formulario.valid" class="btn-principal ion-margin-top" shape="round">
+            Ingresar
+          </ion-button>
+        </form>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button fill="clear" (click)="irAHome()" class="btn-secundario animate-fade-in-up delay-1">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Volver al inicio
     </ion-button>
-  </form>
-
-  <div class="atras">
-    <ion-button expand="block" class="atras-button" (click)="irAHome()">ATRAS</ion-button>
   </div>
 </ion-content>

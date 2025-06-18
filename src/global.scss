@@ -38,4 +38,15 @@
 
 ion-content {
   background: var(--ion-background-color) !important;
+  
+}
+
+ion-header:not(.ion-no-border) ion-toolbar {
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  --color: var(--ion-color-primary-contrast, #fff);
+}
+
+ion-header:not(.ion-no-border) ion-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }

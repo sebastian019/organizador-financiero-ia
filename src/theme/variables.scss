@@ -1,31 +1,56 @@
-/* src/theme/variables.scss */
+/* En: src/theme/variables.scss */
 
-// Define las variables de color globales para la aplicación.
-// Usaremos estas variables para aplicar los temas.
 :root {
-  --ion-background-color: #ffffff;
-  --ion-toolbar-background: #0d6efd; // Azul por defecto para el header
-  --ion-toolbar-color: #ffffff;      // Color del texto en el header
+  /* Fuentes */
+  --ion-font-family: 'Poppins', sans-serif;
 
-
-  --chat-footer-background: #ffffff;
-  --chat-input-background: #f4f5f8;
-  --chat-input-color: #000000;
-
-  // Paleta de colores base de Ionic
-  --ion-color-primary: #0d6efd;
-  --ion-color-primary-rgb: 13, 110, 253;
+  /* Colores primarios y secundarios que ya definimos */
+  --ion-color-primary: #4A90E2;
+  --ion-color-primary-rgb: 74, 144, 226;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #0b60dc;
-  --ion-color-primary-tint: #2579fa;
+  --ion-color-primary-shade: #417fc9;
+  --ion-color-primary-tint: #5c9bec;
 
-  // ... (otros colores de Ionic si los necesitas)
+  --ion-color-secondary: #50E3C2;
+  --ion-color-secondary-rgb: 80, 227, 194;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #46c8ab;
+  --ion-color-secondary-tint: #62e5c8;
+
+  /* ... (mantén los otros colores como tertiary, success, etc.) ... */
+
+  
+  /*
+   ==========================================================================
+   * ESTA ES LA PARTE MÁS IMPORTANTE PARA ARREGLAR EL FONDO BLANCO *
+   ==========================================================================
+   */
+
+  /** MODO CLARO (POR DEFECTO) **/
+  --ion-background-color: #f4f5f8; // <-- ¡AQUÍ ESTÁ LA MAGIA! Fondo gris claro.
+  --ion-text-color: #1c1c1e;
+
+  // Fondo para elementos como tarjetas y items de lista
+  --ion-item-background: #ffffff;
+  --ion-card-background: #ffffff;
 }
 
-// Opcional: Para el modo oscuro, si quieres implementarlo más adelante
+
+/*
+ * MODO OSCURO
+ * Opcional, pero recomendado para una experiencia completa
+ */
 body.dark {
-  --ion-background-color: #121212;
-  --ion-toolbar-background: #1f1f1f;
-  --ion-toolbar-color: #ffffff;
+  /** MODO OSCURO **/
+  --ion-background-color: #0d0d0d;
+  --ion-text-color: #ffffff;
+
+  // Fondo para elementos en modo oscuro
+  --ion-item-background: #1c1c1e;
+  --ion-card-background: #1c1c1e;
+
+  /* Si quieres, puedes ajustar los colores primarios para que tengan más contraste en modo oscuro */
+  // --ion-color-primary: #5c9bec; 
 }

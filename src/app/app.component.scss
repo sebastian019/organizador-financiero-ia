@@ -1,0 +1,49 @@
+/* src/app/app.component.scss */
+ion-menu {
+  // El fondo claro se hereda de las variables globales
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  --width: 280px;
+}
+
+// Estilo para el título "Menú"
+ion-menu ion-header ion-toolbar {
+  // Un fondo ligeramente diferente al de la página para que se distinga
+  --background: #ffffff; 
+  --border-width: 0 0 1px 0;
+  --border-color: rgba(0, 0, 0, 0.08);
+  
+  ion-title {
+    font-weight: 600;
+    color: var(--ion-text-color); // Hereda el color de texto global
+  }
+}
+
+// Estilo de los items de la lista del menú
+ion-content ion-item {
+  --padding-start: 20px;
+  --color: #555;
+  --ripple-color: var(--ion-color-primary);
+  font-weight: 500;
+  
+  ion-icon {
+    color: #888;
+    margin-right: 20px;
+  }
+  
+  // Estilo para el ítem SELECCIONADO
+  &.selected {
+    --color: var(--ion-color-primary);
+    font-weight: bold;
+    // Línea lateral que indica la selección
+    border-left: 4px solid var(--ion-color-primary);
+    --padding-start: 16px;
+
+    ion-icon {
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+ion-menu ion-footer ion-toolbar {
+  --background: transparent;
+}

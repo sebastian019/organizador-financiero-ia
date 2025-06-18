@@ -1,71 +1,72 @@
-.main-header-component {
-  ion-toolbar {
-    --color: #ffffff;
-    position: relative;
-    padding: 0 8px;
-  }
+// Este estilo se aplica a la barra de herramientas del header
+ion-toolbar {
+  // Aseguramos que el degradado global se aplique
+  --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-secondary));
+  --color: white;
+  // Añadimos una sutil línea inferior para darle definición
+  --border-width: 0 0 1px 0;
+  --border-color: rgba(255, 255, 255, 0.15);
+}
 
-  .raw-logo {
-    margin-top: 0px;
-    margin-left: 8px;
-    width: 40px;
-    height: 40px;
-    display: block;
-  }
+// Contenedor del logo para centrarlo y hacerlo clickable
+.header-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
 
-  .header-main-title {
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: var(--ion-toolbar-color, #fff);
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    padding-left: 60px;
-    padding-right: 60px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: normal;
-  }
-
-  .profile-avatar {
-    width: 32px;
-    height: 32px;
-    background-color: var(--ion-color-secondary);
-    color: var(--ion-color-secondary-contrast);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    cursor: pointer;
-    margin-right: 8px; 
-  }
-  
-  ion-menu-button {
-    --color: var(--ion-color-primary-contrast); 
-  }
-
-  ion-buttons[slot="end"] {
-    display: flex;
-    align-items: center;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
 }
 
-@media (min-width: 768px) {
-  .main-header-component {
-    .header-main-title {
-      font-size: 1.5em;
-      padding-left: 100px;
-      padding-right: 100px;
-    }
+// Estilo de la imagen del logo (tu archivo raw.png)
+.header-logo-img {
+  height: 28px;
+  width: auto;
+  margin-right: 8px;
+}
 
-    .tralalero-logo {
-      width: 50px;
-      height: 50px;
-      margin-left: 16px;
+// Estilo para el texto "SmartCapital"
+.header-logo-title {
+  font-size: 1.5em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0; // Quitamos el padding por defecto para alinearlo bien
+  color: white;
+  position: static; // Anulamos la posición por defecto
+}
+
+// Estilos para el botón de perfil
+.profile-button {
+  margin-right: 8px;
+
+  ion-avatar {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: white;
+    font-size: 1.2em;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
+}
+
+// Aseguramos que el botón de menú sea visible
+ion-menu-button {
+  --color: white;
 }

@@ -1,22 +1,52 @@
-<app-header ></app-header>
+<app-header></app-header>
 
 <ion-content class="ion-padding">
-  <div class="dashboard-container">
-    <ion-title class="title2">BIENVENIDO "{{ username || 'Usuario' }}"</ion-title>
-
-    <div class="main-circle">
-      <div class="dollar-symbol">$</div>
-    </div>
-
-    <div class="button-grid">
-      <div class="column">
-        <ion-button expand="block" class="side-button" (click)="irAFamilia()">FAMILIA</ion-button>
-        <ion-button expand="block" class="side-button" (click)="irAInversiones()">INVERSIONES</ion-button>
-      </div>
-      <div class="column">
-        <ion-button expand="block" class="side-button" (click)="irAGastos()">GASTOS</ion-button>
-        <ion-button expand="block" class="side-button" (click)="irConsultaGpt()">CONSULTA GPT</ion-button>
-      </div>
-    </div>
+  <div class="welcome-header animate-fade-in-up">
+    <h2>Bienvenido, <span class="username">{{ username || 'Usuario' }}</span></h2>
+    <p>Este es tu resumen financiero.</p>
   </div>
+
+  <ion-card class="balance-card animate-fade-in-up delay-1">
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-icon name="wallet-outline"></ion-icon> Saldo Actual (Simulado)
+      </ion-card-subtitle>
+      <ion-card-title>$1,250.75</ion-card-title>
+    </ion-card-header>
+    <div class="card-shape-1"></div>
+    <div class="card-shape-2"></div>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" size-md="3" class="animate-fade-in-up delay-2">
+        <ion-card button="true" (click)="irAGastos()" class="action-card">
+          <ion-icon name="pie-chart-outline" color="primary"></ion-icon>
+          <ion-label>Mis Gastos</ion-label>
+          <p class="card-hint">Ver reporte</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" size-md="3" class="animate-fade-in-up delay-3">
+        <ion-card button="true" (click)="irAInversiones()" class="action-card">
+          <ion-icon name="trending-up-outline" color="secondary"></ion-icon>
+          <ion-label>Inversiones</ion-label>
+          <p class="card-hint">Analizar mercado</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" size-md="3" class="animate-fade-in-up delay-4">
+        <ion-card button="true" (click)="irAFamilia()" class="action-card">
+          <ion-icon name="people-outline" color="tertiary"></ion-icon>
+          <ion-label>Grupo Familiar</ion-label>
+          <p class="card-hint">Gestionar</p>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6" size-md="3" class="animate-fade-in-up delay-5">
+        <ion-card button="true" (click)="irConsultaGpt()" class="action-card">
+          <ion-icon name="chatbubbles-outline" color="warning"></ion-icon>
+          <ion-label>Asesor IA</ion-label>
+          <p class="card-hint">Hacer consulta</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

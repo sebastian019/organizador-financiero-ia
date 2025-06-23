@@ -15,4 +15,19 @@ export class GastosService {
     });
     return this.http.get<any[]>(`${this.apiUrl}/mios`, { headers });
   }
+  verificarCartolaCargada() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.get<{ cargada: boolean }>('http://localhost:3000/api/gastos/existe', { headers });
+  }
+  obtenerSaldoActual() {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+
+    return this.http.get<{ saldo: number }>('http://localhost:3000/api/gastos/saldo-actual', { headers });
+  }
+
 }

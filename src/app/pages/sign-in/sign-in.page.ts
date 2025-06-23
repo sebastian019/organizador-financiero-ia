@@ -23,7 +23,12 @@ export class SignInPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/menu-principal']);
+    }
+  }
 
   login() {
     if (this.formulario.invalid) {
@@ -35,8 +40,7 @@ export class SignInPage implements OnInit {
     this.authService.login({ email, password }).subscribe({
       next: (res) => {
         console.log('Login exitoso', res);
-        // Redirige al menú principal después del login.
-        window.location.href = '/menu-principal';
+        this.router.navigate(['/menu-principal']);
       },
       error: (err) => {
         console.error('Error en el login', err);

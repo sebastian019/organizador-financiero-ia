@@ -13,13 +13,11 @@ export class BotonesInicioComponent implements OnInit {
 
   ngOnInit() {}
 
-  // Función para el botón "Iniciar sesión"
   iniciarSesion() {
     //console.log('Iniciar sesión');
     this.router.navigate(['/sign-in']);
   }
 
-  // Función para el segundo botón
   registrarse() {
     //console.log('Registrarce');
     this.router.navigate(['/register']);

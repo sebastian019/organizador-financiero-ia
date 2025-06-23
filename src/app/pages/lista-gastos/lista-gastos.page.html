@@ -1,15 +1,31 @@
 <app-header></app-header>
 
 <ion-content class="ion-padding">
-  <ion-text *ngIf="mensaje">{{ mensaje }}</ion-text>
-  <div *ngIf="cargando">Cargando datos...</div>
-  <div *ngIf="!cargando && data.length > 0">
-    <canvas baseChart
-      [data]="{ labels: labels, datasets: [{ data: data }] }"
-      [type]="'doughnut'">
-    </canvas>
+  <div *ngIf="cargando" class="cargando">Cargando datos...</div>
+  <div *ngIf="mensaje && !cargando" class="error">{{ mensaje }}</div>
+
+  <div class="graficos-container" *ngIf="!cargando && dataGastos && dataAbonos">
+    <div class="grafico">
+      <h3>Distribución de Gastos</h3>
+      <canvas baseChart
+              [data]="dataGastos"
+              [type]="'doughnut'">
+      </canvas>
+    </div>
+
+    <div class="grafico">
+      <h3>Distribución de Abonos</h3>
+      <canvas baseChart
+              [data]="dataAbonos"
+              [type]="'doughnut'">
+      </canvas>
+    </div>
   </div>
-  <div *ngIf="!cargando && data.length === 0">
-    No hay gastos cargados para graficar.
+  
+  <div class="boton-subir-cartola">
+    <ion-button color="primary" expand="block" (click)="irASubirCartola()">
+      <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+      SUBIR NUEVA CARTOLA
+    </ion-button>
   </div>
 </ion-content>

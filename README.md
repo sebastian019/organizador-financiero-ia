@@ -61,6 +61,10 @@ estas se instalan de forma global, solo se tiene que abrir la terminal y ejecuta
 
 - npm install multer
 
+-npm install xlsx
+
+-npm install --save-dev @types/xlsx
+
 - npm install ng2-charts@5.0.0 --legacy-peer-deps
 
 - npm install jwt-decode --legacy-peer-deps

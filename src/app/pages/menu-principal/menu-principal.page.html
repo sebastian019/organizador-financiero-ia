@@ -9,9 +9,14 @@
   <ion-card class="balance-card animate-fade-in-up delay-1">
     <ion-card-header>
       <ion-card-subtitle>
-        <ion-icon name="wallet-outline"></ion-icon> Saldo Actual (Simulado)
+        <ion-icon name="wallet-outline"></ion-icon> Saldo Actual
       </ion-card-subtitle>
-      <ion-card-title>$1,250.75</ion-card-title>
+      <ion-card-title *ngIf="saldoActual > 0; else sinCartola">
+        $ {{ saldoActual | number:'1.2-2' }}
+      </ion-card-title>
+      <ng-template #sinCartola>
+        <ion-card-title>Sin datos aún</ion-card-title>
+      </ng-template>
     </ion-card-header>
     <div class="card-shape-1"></div>
     <div class="card-shape-2"></div>

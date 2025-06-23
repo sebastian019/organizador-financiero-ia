@@ -28,8 +28,8 @@
           </ion-button>
         </form>
 
-        <ion-text *ngIf="mensaje" color="primary" class="ion-text-center">
-          <p>{{ mensaje }}</p>
+        <ion-text *ngIf="mensaje" [color]="mensaje.includes('Error') || mensaje.includes('inválido') ? 'danger' : 'success'" class="ion-text-center">
+        <p>{{ mensaje }}</p>
         </ion-text>
       </ion-card-content>
     </ion-card>

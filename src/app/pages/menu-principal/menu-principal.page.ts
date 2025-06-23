@@ -1,21 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service'; 
+import { GastosService } from '../../services/gastos.service'; // <-- Asegúrate de importar esto
 
 @Component({
   selector: 'app-menu-principal',
   templateUrl: './menu-principal.page.html',
   styleUrls: ['./menu-principal.page.scss'],
-  standalone:false
+  standalone: false
 })
 export class MenuPrincipalPage implements OnInit {
-
   public username: string | null = null; 
+  public saldoActual: number = 0;
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private gastosService: GastosService
+  ) {}
 
   ngOnInit() {
     this.username = this.authService.getUsername();
+    this.obtenerSaldo();
+  }
+
+  obtenerSaldo() {
+    this.gastosService.obtenerSaldoActual().subscribe({
+      next: (data) => {
+        this.saldoActual = data.saldo;
+      },
+      error: (err) => {
+        console.warn('No se pudo obtener el saldo:', err);
+        this.saldoActual = 0;
+      }
+    });
   }
 
   irAGastos() {
@@ -26,16 +44,15 @@ export class MenuPrincipalPage implements OnInit {
     this.router.navigate(['/inversiones']);
   }
 
-  irConsultaGpt(){
+  irConsultaGpt() {
     this.router.navigate(['/consulta-gpt']);
   }
 
   irAOpciones() {
     this.router.navigate(['/opciones']);
-  }  
+  }
 
   irAFamilia() {
     this.router.navigate(['/familia']);
   }
-
 }

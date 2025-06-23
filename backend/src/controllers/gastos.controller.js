@@ -4,9 +4,7 @@ const prisma = new PrismaClient();
 
 const procesarCartola = async (req, res) => {
   try {
-    const id_usuario = req.user.id_usuario; 
-
-    // Lee el archivo Excel subido
+    const id_usuario = req.user.id_usuario;
     const buffer = req.file.buffer;
     const workbook = xlsx.read(buffer, { type: 'buffer' });
     const sheetName = workbook.SheetNames[0];
@@ -14,37 +12,38 @@ const procesarCartola = async (req, res) => {
     const data = xlsx.utils.sheet_to_json(sheet, { range: 18 });
 
     function parseFecha(str) {
-    const meses = { 'Ene': '01', 'Feb': '02', 'Mar': '03', 'Abr': '04', 'May': '05', 'Jun': '06', 'Jul': '07', 'Ago': '08', 'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dic': '12' };
-    const [dia, mes] = str.split('/');
-    return `${meses[mes]}-${dia.padStart(2, '0')}`;
+      const meses = {
+        'Ene': '01', 'Feb': '02', 'Mar': '03', 'Abr': '04',
+        'May': '05', 'Jun': '06', 'Jul': '07', 'Ago': '08',
+        'Sep': '09', 'Oct': '10', 'Nov': '11', 'Dic': '12'
+      };
+      const [dia, mes] = str.split('/');
+      return `${meses[mes]}-${dia.padStart(2, '0')}`;
     }
 
     await prisma.gasto.deleteMany({
-    where: { id_usuario: id_usuario }
+      where: { id_usuario: id_usuario }
     });
 
-
-    // Procesa y guarda cada gasto
     for (let row of data) {
+      if (!row["Fecha"] || !row["Descripción"]) continue;
 
-    if (!row["Fecha"] || !row["Descripción"]) continue;
-
-    await prisma.gasto.create({
+      await prisma.gasto.create({
         data: {
-        descripcion: row["Descripción"],
-        fecha: new Date(`2024-${parseFecha(row["Fecha"])}`), 
-        abono: row["Abonos"] ? Number(row["Abonos"].toString().replace(/\./g, '').replace(',', '.')) : 0,
-        gasto: row["Cargos"] ? Number(row["Cargos"].toString().replace(/\./g, '').replace(',', '.')) : 0,
-        saldo: row["Saldo"] ? Number(row["Saldo"].toString().replace(/\./g, '').replace(',', '.')) : null,
-        id_usuario: id_usuario,
+          descripcion: row["Descripción"],
+          fecha: new Date(`2024-${parseFecha(row["Fecha"])}`),
+          abono: row["Abonos"] ? Number(row["Abonos"].toString().replace(/\./g, '').replace(',', '.')) : 0,
+          gasto: row["Cargos"] ? Number(row["Cargos"].toString().replace(/\./g, '').replace(',', '.')) : 0,
+          saldo: row["Saldo"] ? Number(row["Saldo"].toString().replace(/\./g, '').replace(',', '.')) : null,
+          id_usuario: id_usuario
         }
-    });
+      });
     }
 
-    res.json({ message: 'Cartola procesada y guardada correctamente.' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Error al procesar la cartola.' });
+    res.status(200).json({ mensaje: 'Cartola procesada exitosamente.' });
+  } catch (error) {
+    console.error('Error al procesar cartola:', error);
+    res.status(500).json({ error: 'Error interno al procesar la cartola.' });
   }
 };
 
@@ -52,7 +51,6 @@ const obtenerTotalesPorDescripcion = async (req, res) => {
   const id_usuario = req.user.id_usuario;
 
   try {
-    // Trae todos los gastos del usuario y agrupa por descripción
     const gastos = await prisma.gasto.groupBy({
       by: ['descripcion'],
       where: { id_usuario: id_usuario },
@@ -75,4 +73,46 @@ const obtenerTotalesPorDescripcion = async (req, res) => {
   }
 };
 
-module.exports = { procesarCartola, obtenerTotalesPorDescripcion };
+const verificarCartolaCargada = async (req, res) => {
+  const id_usuario = req.user.id_usuario;
+
+  try {
+    const cantidad = await prisma.gasto.count({
+      where: { id_usuario }
+    });
+
+    res.json({ cargada: cantidad > 0 });
+  } catch (error) {
+    console.error('Error al verificar cartola:', error);
+    res.status(500).json({ error: 'Error al verificar la cartola' });
+  }
+};
+
+const obtenerSaldoActual = async (req, res) => {
+  try {
+    const userId = req.user.id_usuario;
+
+    const ultimoGasto = await prisma.gasto.findFirst({
+      where: { id_usuario: userId },
+      orderBy: { fecha: 'desc' },
+      select: { saldo: true },
+    });
+
+    if (!ultimoGasto) {
+      return res.status(404).json({ saldo: 0 });
+    }
+
+    res.json({ saldo: ultimoGasto.saldo });
+  } catch (error) {
+    console.error('Error al obtener saldo actual:', error);
+    res.status(500).json({ error: 'Error al obtener saldo actual' });
+  }
+};
+
+
+module.exports = {
+  procesarCartola,
+  obtenerTotalesPorDescripcion,
+  verificarCartolaCargada,
+  obtenerSaldoActual
+};

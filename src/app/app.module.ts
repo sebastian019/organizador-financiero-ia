@@ -10,13 +10,25 @@ import { BotonesInicioComponent } from './components/botones-inicio/botones-inic
 import { HttpClientModule } from '@angular/common/http';
 import { ModalGraficoComponent } from './modal-grafico/modal-grafico.component';
 import { NgChartsModule } from 'ng2-charts';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [ModalGraficoComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,FormsModule,HttpClientModule,NgChartsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], 
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgChartsModule
+  ],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],
-  exports:[]
+  exports: []
 })
 export class AppModule {}

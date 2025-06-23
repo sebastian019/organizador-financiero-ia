@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
     IonicModule,      
     CommonModule,     
     RouterModule,      
-  ]
+  ],
 })
 export class AppComponent {
   public appPages = [
@@ -50,9 +50,17 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // ...
+      const token = localStorage.getItem('token');
+
+      // Si hay token, vamos directo al menú principal
+      if (token) {
+        this.router.navigate(['/menu-principal']);
+      } else {
+        this.router.navigate(['/sign-in']); // o la ruta de login que uses
+      }
     });
   }
+
 
   navigateTo(url: string) {
     this.router.navigateByUrl(url);

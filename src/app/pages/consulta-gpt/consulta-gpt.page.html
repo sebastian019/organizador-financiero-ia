@@ -8,16 +8,12 @@
            'user-message': message.sender === 'user', 
            'bot-message': message.sender === 'bot'
          }">
-
-
-      
       <div class="message-bubble">
         <p>{{ message.text }}</p>
       </div>
-
     </div>
-    <div *ngIf="isLoading" class="chat-message bot-message">
 
+    <div *ngIf="isLoading" class="chat-message bot-message">
       <div class="message-bubble">
         <ion-spinner name="dots"></ion-spinner>
       </div>
@@ -28,17 +24,25 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <div class="chat-input-container">
-      <ion-textarea
-        [(ngModel)]="userInput"
-        placeholder="Escribe tu consulta aquí..."
-        (keyup.enter)="sendMessage()"
-        [disabled]="isLoading"
-        [autoGrow]="true"
-        class="chat-input">
-      </ion-textarea>
-      <ion-button (click)="sendMessage()" [disabled]="!userInput.trim() || isLoading" shape="circle" class="send-button">
-        <ion-icon name="send" slot="icon-only"></ion-icon>
-      </ion-button>
+      <ion-select
+      interface="popover"
+      placeholder="Selecciona una consulta predefinida"
+      [(ngModel)]="selectedPrompt"
+      [disabled]="isLoading"
+      class="prompt-select"
+    >
+      <ion-select-option *ngFor="let prompt of prompts" [value]="prompt">
+        {{ prompt }}
+      </ion-select-option>
+    </ion-select>
+
+    <ion-button 
+      (click)="sendMessage()" 
+      [disabled]="!selectedPrompt || isLoading" 
+      shape="round" 
+      class="send-button">
+      <ion-icon name="send" slot="icon-only"></ion-icon>
+    </ion-button>
     </div>
   </ion-toolbar>
 </ion-footer>

@@ -91,6 +91,22 @@ canvas {
   }
 }
 
+.footer-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footer-btn {
+  flex: 1;
+}
+
+
 /* Estilos para pantallas grandes */
 @media (min-width: 768px) {
   .title {

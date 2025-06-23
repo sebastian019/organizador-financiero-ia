@@ -21,11 +21,30 @@
       </canvas>
     </div>
   </div>
-  
-  <div class="boton-subir-cartola">
-    <ion-button color="primary" expand="block" (click)="irASubirCartola()">
-      <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
-      SUBIR NUEVA CARTOLA
-    </ion-button>
-  </div>
+
 </ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar class="footer-toolbar">
+    <div class="footer-buttons">
+      <ion-button 
+        expand="block" 
+        fill="solid" 
+        color="medium"
+        (click)="irASubirCartola()"
+        class="footer-btn">
+        <ion-icon name="cloud-upload-outline" slot="start"></ion-icon>
+        Subir Nueva Cartola
+      </ion-button>
+
+      <ion-button 
+        expand="block" 
+        fill="solid" 
+        color="dark"
+        (click)="consultarIA()"
+        class="footer-btn">
+        <ion-icon name="chatbubbles-outline" slot="start"></ion-icon>
+        Consultar a IA Según Mis Gastos
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

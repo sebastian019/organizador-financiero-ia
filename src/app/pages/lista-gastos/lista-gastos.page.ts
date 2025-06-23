@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GastosService } from '../../services/gastos.service';
-import { Router } from '@angular/router'; // Asegúrate de tener esto
-
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-lista-gastos',
@@ -16,7 +16,16 @@ export class ListaGastosPage implements OnInit {
   cargando = true;
   mensaje = '';
 
-  constructor(private gastosService: GastosService, private router: Router) {}
+  constructor(
+    private gastosService: GastosService,
+    private router: Router,
+    private alertCtrl: AlertController
+  ) {}
+
+  consultarIA() {
+    this.generarYSeleccionarPrompt();
+  }
+
 
   ngOnInit() {
     this.gastosService.obtenerGastosAgrupados().subscribe({
@@ -51,10 +60,9 @@ export class ListaGastosPage implements OnInit {
     });
   }
 
- irASubirCartola() {
+  irASubirCartola() {
     this.router.navigate(['/gastos'], { queryParams: { nueva: true } });
   }
-
 
   generarColores(cantidad: number): string[] {
     const colores = [];
@@ -63,5 +71,50 @@ export class ListaGastosPage implements OnInit {
       colores.push(`hsl(${hue}, 70%, 60%)`);
     }
     return colores;
+  }
+
+  async generarYSeleccionarPrompt() {
+    if (!this.datos.length) return;
+
+    const topGasto = [...this.datos]
+      .filter(d => d.totalGastos > 0)
+      .sort((a, b) => b.totalGastos - a.totalGastos)[0];
+
+    const totalGastos = this.datos.reduce((sum, g) => sum + (g.totalGastos || 0), 0);
+    const totalAbonos = this.datos.reduce((sum, g) => sum + (g.totalAbonos || 0), 0);
+    const saldo = totalAbonos - totalGastos;
+
+    const prompts = [
+      `¿Cómo puedo reducir mis gastos en "${topGasto?.descripcion}"?`,
+      `¿Es saludable un saldo actual de $${saldo.toFixed(0)} considerando mis ingresos y gastos?`,
+      `¿Qué sugerencias tienes para optimizar mis abonos, que totalizan $${totalAbonos.toFixed(0)}?`,
+      `¿En qué categorías debería ahorrar más si estoy gastando $${totalGastos.toFixed(0)} al mes?`,
+      `¿Qué recomendaciones me das si mi gasto más alto es en "${topGasto?.descripcion}"?`
+    ];
+
+    const alert = await this.alertCtrl.create({
+      header: 'Selecciona una consulta',
+      inputs: prompts.map((prompt, index) => ({
+        name: `prompt${index}`,
+        type: 'radio',
+        label: prompt,
+        value: prompt
+      })),
+      buttons: [
+        { text: 'Cancelar', role: 'cancel' },
+        {
+          text: 'Enviar',
+          handler: (selectedPrompt: string) => {
+            if (selectedPrompt) {
+              this.router.navigate(['/consulta-gpt'], {
+                queryParams: { prompt: selectedPrompt }
+              });
+            }
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

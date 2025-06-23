@@ -53,13 +53,10 @@ Este sistema ayuda a los usuarios a gestionar sus finanzas personales mediante i
 
 //Inicio .env
 JWT_SECRET="secretoSuperSeguro"
-OPENAI_API_KEY=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
 DATABASE_URL="postgresql://postgres:okEKQJlRxeaNGLNtgnkTFSVognIskEmK@mainline.proxy.rlwy.net:30684/railway"
 //Final .env
 
 estas se instalan de forma global, solo se tiene que abrir la terminal y ejecutar los siguientes comandos
-
-- npm install multer
 
 -npm install xlsx
 

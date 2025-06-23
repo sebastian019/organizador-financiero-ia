@@ -98,14 +98,37 @@ const obtenerSaldoActual = async (req, res) => {
       select: { saldo: true },
     });
 
-    if (!ultimoGasto) {
-      return res.status(404).json({ saldo: 0 });
-    }
+    const saldoSeguro = (ultimoGasto && typeof ultimoGasto.saldo === 'number') 
+      ? ultimoGasto.saldo 
+      : 0;
 
-    res.json({ saldo: ultimoGasto.saldo });
+    res.status(200).json({ saldo: saldoSeguro });
   } catch (error) {
     console.error('Error al obtener saldo actual:', error);
     res.status(500).json({ error: 'Error al obtener saldo actual' });
+  }
+};
+
+
+const registrarCompraAccion = async (req, res) => {
+  const { descripcion, fecha, monto, id_usuario, saldo_actualizado } = req.body;
+
+  try {
+    const gasto = await prisma.gasto.create({
+      data: {
+        descripcion,
+        fecha: new Date(fecha),
+        gasto: monto,
+        saldo: saldo_actualizado,
+        abono: null,
+        id_usuario
+      }
+    });
+
+    res.json(gasto);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: 'Error al registrar la compra como gasto.' });
   }
 };
 
@@ -114,5 +137,6 @@ module.exports = {
   procesarCartola,
   obtenerTotalesPorDescripcion,
   verificarCartolaCargada,
-  obtenerSaldoActual
+  obtenerSaldoActual,
+  registrarCompraAccion
 };

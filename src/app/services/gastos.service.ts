@@ -30,4 +30,10 @@ export class GastosService {
     return this.http.get<{ saldo: number }>('http://localhost:3000/api/gastos/saldo-actual', { headers });
   }
 
+  registrarCompraAccion(data: any) {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({ Authorization: `Bearer ${token}` });
+    return this.http.post('http://localhost:3000/api/gastos/registrar-compra', data, { headers });
+  }
+
 }
